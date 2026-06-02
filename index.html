@@ -5,8 +5,28 @@
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --navy:#0F2942;--teal:#3A9EA5;--coral:#E07B54;--blue:#6DB0F2;
-  --slate:#4a5963;--lgrey:#f2f4f6;--steal:#e8f5f6;--sblue:#eaf3fd;
+*{box-sizing:border-box;margin:0;padding:0}
+
+.sr-only{
+  position:absolute;
+  width:1px;
+  height:1px;
+  padding:0;
+  margin:-1px;
+  overflow:hidden;
+  clip:rect(0,0,0,0);
+  border:0;
+}
+
+:root{
+  --navy:#0F2942;
+  --teal:#3A9EA5;
+  --coral:#E07B54;
+  --blue:#6DB0F2;
+  --slate:#4a5963;
+  --lgrey:#f2f4f6;
+  --steal:#e8f5f6;
+  --sblue:#eaf3fd;
   --border:rgba(15,41,66,0.1);
 }
 html{scroll-behavior:smooth}
@@ -734,7 +754,8 @@ footer{background:var(--navy);border-top:1px solid rgba(255,255,255,0.06);paddin
       <div class="cta-get"><span class="cta-get-day">Day 7</span>Something worth sharing with your team</div>
     </div>
     <div class="optin-form">
-      <input type="email" placeholder="Your email address">
+      <label for="email" class="sr-only">Email Address</label>
+<input id="email" type="email" placeholder="Your email">
       <button onclick="window.open('https://trainerfy360.kit.com/a964fd2d83','_blank')">Send me the toolkit</button>
     </div>
     <p class="cta-privacy">Free forever. No spam. Unsubscribe any time.</p>
