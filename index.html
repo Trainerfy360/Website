@@ -1,27 +1,7 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-<link rel="icon" type="image/png" href="favicon.png">
-  <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Trainerfy360 | AI-Enabled Instructional Design & Learning Design Workflows</title>
-
-<meta name="description" content="Practical AI frameworks, prompt systems, and workflow solutions for instructional designers, learning professionals, and L&D teams. Learn how to use AI across the ADDIE model with Trainerfy360.">
-
-<meta name="keywords" content="Instructional Design, Learning Design, AI in Learning and Development, AI for Instructional Designers, Learning and Development, ADDIE Model, Prompt Engineering, Training Design, eLearning Development, Trainerfy360">
-
-<meta name="author" content="Amanda Jones">
-
-<meta property="og:title" content="Trainerfy360 | AI-Enabled Instructional Design">
-<meta property="og:description" content="Practical AI frameworks, prompt systems and workflow solutions for learning professionals.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://trainerfy360.com">
-
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Trainerfy360 | AI-Enabled Instructional Design">
-<meta name="twitter:description" content="Practical AI frameworks, prompt systems and workflow solutions for learning professionals.">
-  <title>Trainerfy360™ | AI-Enabled Instructional Design™</title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="favicon.png">   <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>Trainerfy360 | AI-Enabled Instructional Design &amp; Learning Design Workflows</title> <meta name="description" content="Practical AI frameworks, prompt systems, and workflow solutions for instructional designers, learning professionals, and L&amp;D teams. Learn how to use AI across the ADDIE model with Trainerfy360."> <meta name="keywords" content="Instructional Design, Learning Design, AI in Learning and Development, AI for Instructional Designers, Learning and Development, ADDIE Model, Prompt Engineering, Training Design, eLearning Development, Trainerfy360"> <meta name="author" content="Amanda Jones"> <meta property="og:title" content="Trainerfy360 | AI-Enabled Instructional Design"> <meta property="og:description" content="Practical AI frameworks, prompt systems and workflow solutions for learning professionals."> <meta property="og:type" content="website"> <meta property="og:url" content="https://trainerfy360.com"> <meta property="og:image" content="https://trainerfy360.com/og-image.png"> <meta property="og:image:width" content="1080"> <meta property="og:image:height" content="1080"> <meta property="og:image:alt" content="Trainerfy360 - AI-Enabled Instructional Design"> <meta property="og:site_name" content="Trainerfy360"> <meta name="twitter:card" content="summary_large_image"> <meta name="twitter:title" content="Trainerfy360 | AI-Enabled Instructional Design"> <meta name="twitter:description" content="Practical AI frameworks, prompt systems and workflow solutions for learning professionals."> <meta name="twitter:image" content="https://trainerfy360.com/og-image.png"> <meta name="twitter:image:alt" content="Trainerfy360 - AI-Enabled Instructional Design"> <meta name="twitter:site" content="@trainerfy360"> <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet"> 
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 :root{
@@ -294,6 +274,124 @@ footer{background:var(--navy);border-top:1px solid rgba(255,255,255,0.06);paddin
   .optin-form button{border-radius:9px}
   .footer-inner{flex-direction:column;align-items:flex-start}
 }
+
+/* ========================================
+   MOBILE RESPONSIVE FIXES
+   Req breakpoint : max-width 768px
+   Secondary      : max-width 480px
+   ======================================== */
+
+@media (max-width: 768px) {
+
+  /* Global image safety net */
+  img { max-width: 100%; height: auto; display: block; }
+  svg { max-width: 100%; }
+
+  /* NAV */
+  nav { padding: 0 1rem; height: 60px; }
+  .nav-logo img { height: 26px; }
+  .nav-cta { padding: 0.42rem 0.85rem; font-size: 0.74rem; }
+
+  /* HERO */
+  .hero-inner { padding: 5.75rem 1.25rem 3.25rem; }
+  .hero h1 { font-size: clamp(1.65rem, 6.5vw, 2rem); }
+  .hero-sub { font-size: 0.88rem; max-width: 100%; }
+  .btn-hero { width: 100%; justify-content: center; padding: 0.9rem 1.5rem; box-sizing: border-box; }
+  .hero-cta-note { font-size: 0.7rem; }
+  .hero-stats { flex-wrap: wrap; gap: 1rem; border-top: none; padding-top: 0; margin-top: 1.5rem; }
+  .hs { border-right: none; padding-right: 0; margin-right: 0; min-width: 28%; }
+
+  /* TICKER */
+  .ticker-label { padding: 0 0.65rem 0 0.9rem; font-size: 0.6rem; }
+
+  /* WHY DIFFERENT */
+  .why { padding: 1.75rem 1.25rem; }
+  .why-inner { grid-template-columns: 1fr; gap: 1rem; }
+
+  /* PROBLEM: Tool Chaos / Generic Outputs / Endless Rework */
+  .problem { padding: 3rem 1.25rem; }
+  .prob-grid { grid-template-columns: 1fr; gap: 1rem; margin-top: 1.75rem; }
+  .prob-card { padding: 1.35rem; }
+
+  /* SOLUTION / ADDIE ORBIT */
+  .solution { padding: 3rem 1.25rem; }
+  .sol-inner { grid-template-columns: 1fr; gap: 2rem; }
+  #orbitSvg { max-width: min(100%, 340px); margin: 0 auto; display: block; }
+
+  /* FRAMEWORK / C.R.A.F.T. */
+  .framework { padding: 3rem 1.25rem; }
+  .fw-inner { grid-template-columns: 1fr; }
+
+  /* C.R.A.F.T. letter cards: 2-col wrap, T card full width */
+  .craft-grid { flex-wrap: wrap; gap: 0.6rem; }
+  .craft-grid .cl { flex: 0 0 calc(50% - 0.3rem); min-width: calc(50% - 0.3rem); box-sizing: border-box; }
+  .craft-grid .cl:last-child, .craft-grid .cl.cl-t { flex: 0 0 100%; min-width: 100%; max-width: 100%; }
+  .cl-solo { max-width: 100%; }
+  .craft-card { padding: 1.25rem; }
+  .btn-teal { width: 100%; justify-content: center; box-sizing: border-box; }
+
+  /* BEFORE VS AFTER */
+  .bva { padding: 3rem 1.25rem; }
+  .bva-grid { grid-template-columns: 1fr; gap: 1.25rem; }
+  .bva-divider { display: none; }
+  .bva-cta { padding: 1.75rem 1.25rem; }
+  .bva-cta .btn-teal { width: 100%; justify-content: center; }
+
+  /* RESOURCES: Toolkit / Prompt Library / Playbook */
+  .resources { padding: 3rem 1.25rem; }
+  .res-grid { grid-template-columns: 1fr; gap: 1.25rem; margin-top: 1.75rem; }
+  .res-card { padding: 1.35rem; }
+  .res-btn { display: block; width: 100%; text-align: center; box-sizing: border-box; }
+
+  /* ABOUT */
+  .about { padding: 3rem 1.25rem; }
+  .about-inner { grid-template-columns: 1fr; gap: 2rem; }
+  .about-photo-col { flex-direction: row; align-items: flex-start; text-align: left; gap: 1.25rem; }
+  .about-photo { width: 90px; height: 90px; flex-shrink: 0; margin: 0; }
+
+  /* FINAL CTA */
+  .final-cta { padding: 3.5rem 1.25rem; }
+  .optin-form { flex-direction: column; max-width: 100%; }
+  .optin-form input { border-right: 1.5px solid rgba(255,255,255,0.15); border-radius: 9px; margin-bottom: 8px; width: 100%; box-sizing: border-box; }
+  .optin-form button { border-radius: 9px; width: 100%; padding: 0.9rem 1.3rem; box-sizing: border-box; }
+  .cta-gets { padding: 1rem 1.1rem; }
+  .cta-get { font-size: 0.78rem; }
+
+  /* FOOTER */
+  footer { padding: 2rem 1.25rem 1.5rem; }
+  .footer-inner { flex-direction: column; align-items: flex-start; gap: 1.25rem; }
+
+  /* TYPOGRAPHY */
+  h2 { font-size: clamp(1.35rem, 5.5vw, 1.8rem); }
+  .sdesc { font-size: 0.88rem; max-width: 100%; margin-bottom: 1.75rem; }
+  body { font-size: 14px; }
+  .stag { font-size: 0.63rem; }
+
+}
+
+/* Secondary: very small phones (iPhone SE 375px) */
+@media (max-width: 480px) {
+
+  nav { padding: 0 0.875rem; height: 58px; }
+  .nav-logo img { height: 24px; }
+  .nav-cta { padding: 0.38rem 0.75rem; font-size: 0.72rem; }
+  .hero-inner { padding: 5.25rem 1rem 3rem; }
+  .hero h1 { font-size: 1.6rem; }
+
+  /* Craft grid: single column on very small screens */
+  .craft-grid .cl { flex: 0 0 100%; min-width: 100%; }
+
+  .why { padding: 1.5rem 1rem; }
+  .problem, .solution, .framework, .bva, .resources, .about, .final-cta { padding: 2.5rem 1rem; }
+  h2 { font-size: 1.35rem; }
+  .hs-num { font-size: 1.35rem; }
+  .prob-card, .res-card { padding: 1.2rem; }
+  .craft-card { padding: 1rem; }
+  .bva-col { padding: 1.5rem; }
+
+}
+
+.nav-logo img{mix-blend-mode:screen!important}
 </style>
 </head>
 <body>
@@ -650,9 +748,9 @@ footer{background:var(--navy);border-top:1px solid rgba(255,255,255,0.06);paddin
     <div class="social-row">
       <a href="https://www.linkedin.com/company/trainerfy360/" class="sb" aria-label="LinkedIn" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
       <a href="https://www.instagram.com/trainerfy360" class="sb" aria-label="Instagram" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
-      <a href="https://x.com/trainerfy360" class="sb" aria-label="X" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+      <a href="https://x.com/trainerfy360" class="sb" aria-label="X" target="_blank" rel="noopener><svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
       <a href="https://www.youtube.com/@trainerfy360" class="sb" aria-label="YouTube" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
-      <a href="https://wa.me/61449593933?text=Hi%20Amanda%2C%20I%27m%20interested%20in%20Trainerfy360" class="sb" aria-label="WhatsApp" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.71.306 1.263.489 1.694.626.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884M20.52 3.449C18.27 1.197 15.279 0 12.057 0 5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.946L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.557 0 11.892-5.335 11.895-11.893a11.821 11.821 0 00-3.425-8.452z"/></svg></a>
+      <a href="https://wa.me/61449593933" class="sb" aria-label="WhatsApp" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.71.306 1.263.489 1.694.626.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884M20.52 3.449C18.27 1.197 15.279 0 12.057 0 5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.946L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.557 0 11.892-5.335 11.895-11.893a11.821 11.821 0 00-3.425-8.452z"/></svg></a>
     </div>
   </div>
 </footer>
