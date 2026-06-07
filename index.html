@@ -221,29 +221,39 @@ h2 em{font-style:normal;color:var(--teal)}
 
 /* RESOURCES */
 .resources{background:#fff;padding:4.5rem 2.5rem;position:relative;overflow:hidden}
-.res-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-top:2.25rem}
-.res-card{display:flex;flex-direction:column;background:#fff;border:1px solid var(--border);border-radius:14px;padding:1.6rem;border-top:4px solid transparent;transition:all 0.28s}
-.res-card:hover{background:#fff;box-shadow:0 8px 28px rgba(15,41,66,0.09);transform:translateY(-3px)}
-.rc-teal{border-top-color:var(--teal);box-shadow:0 2px 0 0 rgba(109,178,174,0.15)}
-.rc-coral{border-top-color:var(--coral);box-shadow:0 2px 0 0 rgba(254,135,117,0.15)}
-.rc-blue{border-top-color:var(--blue);box-shadow:0 2px 0 0 rgba(109,176,242,0.15)}
-.res-pill{display:inline-block;font-size:0.64rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:0.18rem 0.6rem;border-radius:100px;margin-bottom:0.65rem}
-.rc-teal .res-pill{background:var(--steal);color:var(--teal-deep)}
-.rc-coral .res-pill{background:var(--steal);color:var(--teal-deep)}
-.rc-blue .res-pill{background:rgba(109,176,242,0.15);color:var(--blue-a);border:1px solid rgba(109,176,242,0.3)}
-.res-title{font-family:'Poppins',sans-serif;font-weight:700;font-size:0.91rem;color:var(--navy);margin-bottom:0.4rem;line-height:1.3}
-.res-outcome{font-size:0.76rem;font-weight:700;color:var(--teal-deep);margin-bottom:0.4rem} .rc-blue .res-outcome{color:var(--blue-a)} .rc-coral .res-outcome{color:var(--teal-deep)} .rc-blue .res-outcome{color:var(--blue-a)}
-.res-desc{font-size:0.81rem;color:var(--slate);line-height:1.62;margin-bottom:1rem;flex:1}
-.res-cta{color:var(--teal-deep);font-size:0.8rem;font-weight:700;text-decoration:none}
-a:focus-visible,button:focus-visible,.btn-hero:focus-visible,.btn-teal:focus-visible{outline:3px solid var(--blue-a);outline-offset:2px}
-.res-soon{font-size:0.73rem;font-weight:700;color:var(--slate);opacity:0.55}
-.res-btn{display:inline-block;padding:0.65rem 1.25rem;border-radius:8px;font-family:'Open Sans',sans-serif;font-size:0.82rem;font-weight:700;text-decoration:none;transition:all 0.2s;margin-top:auto}
-.res-btn:hover{transform:translateY(-2px);filter:brightness(1.08)}
-.res-btn-teal{background:var(--teal-deep);color:#fff}
-.res-btn-coral{background:var(--coral-deep);color:#fff}
-.res-btn-blue{background:var(--blue-a);color:#fff}
+.res-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:2.5rem;align-items:stretch}
+.fg-card{display:flex;flex-direction:column;background:#F4F6F7;border:1px solid rgba(20,58,92,0.1);border-radius:14px;padding:28px;position:relative;overflow:hidden;transition:box-shadow 0.22s,transform 0.22s}
+.fg-card:hover{box-shadow:0 10px 32px rgba(20,58,92,0.11);transform:translateY(-3px)}
+.fg-accent-bar{position:absolute;top:0;left:0;right:0;height:4px;border-radius:14px 14px 0 0}
+.fg-card--teal .fg-accent-bar{background:var(--teal-deep)}
+.fg-card--coral .fg-accent-bar{background:var(--coral-deep)}
+.fg-card--blue .fg-accent-bar{background:var(--blue-a)}
+.fg-pill{display:inline-block;font-family:'Poppins',sans-serif;font-size:0.62rem;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;padding:0.22rem 0.65rem;border-radius:100px;margin-bottom:1.1rem;margin-top:0.5rem}
+.fg-card--teal .fg-pill{background:rgba(26,122,128,0.1);color:var(--teal-deep)}
+.fg-card--coral .fg-pill{background:rgba(181,81,42,0.1);color:var(--coral-deep)}
+.fg-card--blue .fg-pill{background:rgba(19,119,216,0.1);color:var(--blue-a)}
+.fg-eyebrow{display:flex;align-items:center;gap:0.45rem;margin-bottom:0.65rem}
+.fg-orbit{flex-shrink:0}
+.fg-card--teal .fg-orbit{color:var(--teal-deep)}
+.fg-card--coral .fg-orbit{color:var(--coral-deep)}
+.fg-card--blue .fg-orbit{color:var(--blue-a)}
+.fg-label{font-family:'Poppins',sans-serif;font-size:0.62rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase}
+.fg-card--teal .fg-label{color:var(--teal-deep)}
+.fg-card--coral .fg-label{color:var(--coral-deep)}
+.fg-card--blue .fg-label{color:var(--blue-a)}
+.fg-title{font-family:'Poppins',sans-serif;font-weight:700;font-size:1.05rem;color:var(--navy);margin-bottom:0.35rem;line-height:1.35}
+.fg-subtitle{font-family:'Poppins',sans-serif;font-weight:600;font-size:0.8rem;margin-bottom:0.85rem}
+.fg-card--teal .fg-subtitle{color:var(--teal-deep)}
+.fg-card--coral .fg-subtitle{color:var(--coral-deep)}
+.fg-card--blue .fg-subtitle{color:var(--blue-a)}
+.fg-body{font-family:'Open Sans',sans-serif;font-weight:400;font-size:0.84rem;color:var(--slate);line-height:1.72;flex:1;margin-bottom:1.25rem}
+.fg-btn{display:block;width:100%;font-family:'Poppins',sans-serif;font-weight:600;font-size:0.82rem;text-align:center;padding:0.7rem 1rem;border-radius:8px;border:none;cursor:pointer;text-decoration:none;transition:opacity 0.18s,transform 0.18s;color:#fff;margin-top:auto;letter-spacing:0.01em}
+.fg-btn:hover{opacity:0.88;transform:translateY(-1px)}
+.fg-card--teal .fg-btn{background:var(--teal-deep)}
+.fg-card--coral .fg-btn{background:var(--coral-deep)}
+.fg-card--blue .fg-btn{background:var(--blue-a)}
+@media(max-width:900px){.res-grid{grid-template-columns:1fr}}
 .res-bottom{text-align:center;margin-top:2rem}
-
 /* ABOUT */
 .about{background:#F7F8FA;padding:5rem 2.5rem;position:relative;overflow:hidden} .about-inner{position:relative;z-index:1} 
 .about-inner{max-width:1060px;margin:0 auto;display:grid;grid-template-columns:280px 1fr;gap:3rem;align-items:center;position:relative;z-index:1}
@@ -750,27 +760,44 @@ button:focus-visible,
     <h2>Start with the system. <em>Not the guesswork</em><span class="coral-dot">.</span></h2>
     <p class="sdesc">Three free resources for learning professionals — download today.</p>
     <div class="res-grid">
-      <div class="res-card rc-teal">
-        <div class="res-pill">Free — available now</div>
-        <div class="res-title">The C.R.A.F.T.<span class="tm">™</span> Toolkit</div>
-        <div class="res-outcome">Prompts that get closer, faster.</div>
-        <p class="res-desc">The prompting framework plus 11 ready-to-use prompts mapped across all five ADDIE phases. Download it. Use it today.</p>
-        <a href="/craft" class="res-btn res-btn-teal">Download the free toolkit →</a>
+      <!-- FIELD GUIDE 01: C.R.A.F.T. Toolkit -->
+      <div class="fg-card fg-card--teal">
+        <div class="fg-accent-bar"></div>
+        <div class="fg-pill">Free — Available Now</div>
+        <div class="fg-eyebrow">
+          <svg class="fg-orbit" aria-hidden="true" focusable="false" width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="9" cy="9" r="7.5" stroke="currentColor" stroke-opacity="0.25" stroke-width="1"/><circle cx="9" cy="9" r="4.5" stroke="currentColor" stroke-opacity="0.5" stroke-width="1"/><circle cx="14.5" cy="5" r="2" fill="#FE8775"/></svg>
+          <span class="fg-label">Field Guide 01</span>
+        </div>
+        <h3 class="fg-title">The C.R.A.F.T.<span class="tm">™</span> Toolkit</h3>
+        <div class="fg-subtitle">Prompts that get closer, faster.</div>
+        <p class="fg-body">The prompting framework plus 11 ready-to-use prompts mapped across all five ADDIE phases. Download it. Use it today.</p>
+        <a href="/craft" class="fg-btn">Download the free toolkit →</a>
       </div>
-<div class="res-card rc-coral">
-  <div class="res-pill">Free — Available Now</div>
-  <div class="res-title">AI Tool-to-Task Guide</div>
-  <div class="res-outcome">A practical guide for faster asset creation.</div>
- <p class="res-desc">A practical guide to choosing the right AI tool for slides, videos, graphics and learning assets — so you can build faster without the tool-hopping drama.</p>
-  <a href="/ai-tools" class="res-btn res-btn-coral">Download the free guide →</a>
-</div>
-      <div class="res-card rc-blue">
-        <div class="res-pill">Coming soon</div>
-        <div class="res-title">The AI Learning Design Playbook</div>
-        <div class="res-outcome" style="color:var(--slate);font-weight:400;font-size:0.75rem;margin-bottom:0.5rem">Powered by the AI-Enabled ADDIE Orbit™</div>
-        <div class="res-outcome">You get: the complete system, end to end.</div>
-        <p class="res-desc">The full workflow system — prompts, templates, quality review framework and maturity model. Everything in one place.</p>
-        <a href="/playbook" class="res-btn res-btn-blue">Join the waitlist →</a>
+      <!-- FIELD GUIDE 02: AI Tool-to-Task Guide -->
+      <div class="fg-card fg-card--coral">
+        <div class="fg-accent-bar"></div>
+        <div class="fg-pill">Free — Available Now</div>
+        <div class="fg-eyebrow">
+          <svg class="fg-orbit" aria-hidden="true" focusable="false" width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="9" cy="9" r="7.5" stroke="currentColor" stroke-opacity="0.25" stroke-width="1"/><circle cx="9" cy="9" r="4.5" stroke="currentColor" stroke-opacity="0.5" stroke-width="1"/><circle cx="14.5" cy="5" r="2" fill="#FE8775"/></svg>
+          <span class="fg-label">Field Guide 02</span>
+        </div>
+        <h3 class="fg-title">AI Tool-to-Task Guide</h3>
+        <div class="fg-subtitle">A practical guide for faster asset creation.</div>
+        <p class="fg-body">A practical guide to choosing the right AI tool for slides, videos, graphics and learning assets — so you can build faster without the tool-hopping drama.</p>
+        <a href="/ai-tools" class="fg-btn">Download the free guide →</a>
+      </div>
+      <!-- FIELD GUIDE 03: AI Learning Design Playbook -->
+      <div class="fg-card fg-card--blue">
+        <div class="fg-accent-bar"></div>
+        <div class="fg-pill">Coming Soon</div>
+        <div class="fg-eyebrow">
+          <svg class="fg-orbit" aria-hidden="true" focusable="false" width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="9" cy="9" r="7.5" stroke="currentColor" stroke-opacity="0.25" stroke-width="1"/><circle cx="9" cy="9" r="4.5" stroke="currentColor" stroke-opacity="0.5" stroke-width="1"/><circle cx="14.5" cy="5" r="2" fill="#FE8775"/></svg>
+          <span class="fg-label">Field Guide 03</span>
+        </div>
+        <h3 class="fg-title">The AI Learning Design Playbook</h3>
+        <div class="fg-subtitle">Powered by the AI-Enabled ADDIE Orbit™</div>
+        <p class="fg-body">The full workflow system — prompts, templates, quality review framework and maturity model. Everything in one place.</p>
+        <a href="/playbook" class="fg-btn">Join the waitlist →</a>
       </div>
     </div>
   </div>
