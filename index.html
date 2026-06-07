@@ -151,7 +151,7 @@ h2 em{font-style:normal;color:var(--teal)}
 .pi3{background:rgba(109,176,242,0.12)}
 .p-label{font-family:'Poppins',sans-serif;font-weight:700;color:var(--teal-deep);display:block;font-size:0.85rem;margin-bottom:1px}
 
-/* ÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ ORBIT ANIMATIONS ÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ */
+/* ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ ORBIT ANIMATIONS ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ */
 @keyframes orbitSpin{
   0%  {opacity:0;transform:rotate(-6deg) scale(0.9)}
   100%{opacity:1;transform:rotate(0deg) scale(1)}
@@ -462,7 +462,20 @@ button:focus-visible,
 .nav-links a{font-family:'Open Sans',sans-serif;font-size:0.78rem;font-weight:600;color:rgba(255,255,255,0.82);text-decoration:none;letter-spacing:0.02em;transition:color 0.18s,opacity 0.18s;white-space:nowrap}
 .nav-links a:hover{color:#fff}
 .nav-links a:focus-visible{outline:3px solid #6DB0F2;outline-offset:3px;border-radius:3px}
-@media(max-width:860px){.nav-links{display:none}}
+.nav-burger{display:none;flex-direction:column;justify-content:center;gap:5px;background:none;border:none;cursor:pointer;padding:8px;margin-left:auto}
+.nav-burger span{display:block;width:22px;height:2px;background:#fff;border-radius:2px;transition:transform 0.25s,opacity 0.2s}
+.nav-burger[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.nav-burger[aria-expanded="true"] span:nth-child(2){opacity:0}
+.nav-burger[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.nav-mobile{display:none;position:fixed;top:72px;left:0;right:0;z-index:99;background:rgba(10,28,48,0.98);backdrop-filter:blur(16px);padding:1.5rem 2rem 2rem;border-top:1px solid rgba(255,255,255,0.08)}
+.nav-mobile.is-open{display:block}
+.nav-mobile ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:0}
+.nav-mobile ul li a{display:block;padding:0.85rem 0;color:rgba(255,255,255,0.88);font-family:'Poppins',sans-serif;font-size:1.05rem;font-weight:600;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.07);transition:color 0.15s}
+.nav-mobile ul li:last-child a{border-bottom:none}
+.nav-mobile ul li a:hover{color:#6DB2AE}
+.nav-mobile-close{position:absolute;top:1rem;right:1.25rem;background:none;border:none;color:rgba(255,255,255,0.6);font-size:1.3rem;cursor:pointer;line-height:1;padding:4px 8px}
+.nav-mobile-close:hover{color:#fff}
+@media(max-width:860px){.nav-links{display:none}.nav-burger{display:flex}}
 </style>
 </head>
 <body>
@@ -476,9 +489,21 @@ button:focus-visible,
     <li><a href="#resources">Resources</a></li>
     <li><a href="#about">About</a></li>
   </ul>
+  <button class="nav-burger" aria-label="Open menu" aria-expanded="false" aria-controls="nav-mobile-menu" onclick="t360NavToggle(this)">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+<div id="nav-mobile-menu" class="nav-mobile" aria-hidden="true">
+  <button class="nav-mobile-close" aria-label="Close menu" onclick="t360NavToggle(document.querySelector('.nav-burger'))">&#x2715;</button>
+  <ul>
+    <li><a href="#how-it-works" onclick="t360NavToggle(document.querySelector('.nav-burger'))">How it works</a></li>
+    <li><a href="#framework" onclick="t360NavToggle(document.querySelector('.nav-burger'))">The framework</a></li>
+    <li><a href="#resources" onclick="t360NavToggle(document.querySelector('.nav-burger'))">Resources</a></li>
+    <li><a href="#about" onclick="t360NavToggle(document.querySelector('.nav-burger'))">About</a></li>
+  </ul>
+</div>
 
-<!-- ÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ  HERO -->
+<!-- ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ  HERO -->
 <section class="hero">
   <div class="hero-bg"></div>
   <div class="hero-overlay"></div>
@@ -498,7 +523,7 @@ button:focus-visible,
   </div>
 </section>
 
-<!-- ÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¡ WHY DIFFERENT -->
+<!-- ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¡ WHY DIFFERENT -->
 <div class="why">
   <div class="why-inner">
     <div class="why-item">
@@ -517,11 +542,11 @@ button:focus-visible,
 </div>
 
 
-<!-- ÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¤ WHY TRAINERFY360 VIDEO -->
+<!-- ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¤ WHY TRAINERFY360 VIDEO -->
 <section class="why-trainerfy" id="video" aria-labelledby="why-trainerfy-heading"
          style="max-width:1100px;margin:0 auto;padding:64px 24px;">
   <div style="display:flex;flex-wrap:wrap;gap:40px;align-items:center;">
-    <!-- Video (ÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ58%) -->
+    <!-- Video (ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ58%) -->
     <div style="flex:1 1 58%;min-width:300px;">
       <div id="amanda-intro-video">
         <button type="button" class="t360-video"
@@ -536,7 +561,7 @@ button:focus-visible,
         </button>
       </div>
     </div>
-    <!-- Copy (ÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ42%) -->
+    <!-- Copy (ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ42%) -->
     <div style="flex:1 1 38%;min-width:260px;">
       <p style="text-transform:uppercase;letter-spacing:2px;font-weight:700;color:#1A7A80;margin:0 0 12px;">Why Trainerfy360</p>
       <h2 id="why-trainerfy-heading" style="color:#143A5C;font-size:2rem;line-height:1.2;margin:0 0 16px;">Not just another AI tool guide.</h2>
@@ -570,7 +595,7 @@ button:focus-visible,
 </style>
 
 
-<!-- ÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ PROBLEM -->
+<!-- ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ PROBLEM -->
 <section class="problem">
   <div class="si">
     <div class="stag"><span class="t360-eyebrow"><svg class="t360-orbit-mark" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="6" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="12.2" cy="3.8" r="1.8" fill="#FE8775"/></svg>The opportunity</span></div>
@@ -584,7 +609,7 @@ button:focus-visible,
   </div>
 </section>
 
-<!-- ÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ£ SOLUTION &mdash; ADDIE ORBIT -->
+<!-- ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ£ SOLUTION &mdash; ADDIE ORBIT -->
 <section class="solution" id="how-it-works">
   <div class="sol-inner">
     <div>
@@ -668,7 +693,7 @@ button:focus-visible,
   </div>
 </section>
 
-<!-- ÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¤ FRAMEWORK &mdash; C.R.A.F.T. -->
+<!-- ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¤ FRAMEWORK &mdash; C.R.A.F.T. -->
 <section class="framework" id="framework"><div class="depth-circle dc-tl" aria-hidden="true"></div><div class="depth-circle dc-br" aria-hidden="true"></div>
   <div class="fw-inner">
     <div class="fw-top">
@@ -756,7 +781,7 @@ button:focus-visible,
   </div>
 </section>
 
-<!-- ÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¥ FREE RESOURCES -->
+<!-- ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¥ FREE RESOURCES -->
 <section class="resources" id="resources"><div class="depth-circle dc-tr" aria-hidden="true"></div><div class="depth-circle dc-tr" aria-hidden="true"></div>
   <div class="si">
     <div class="stag"><span class="t360-eyebrow"><svg class="t360-orbit-mark" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="6" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="12.2" cy="3.8" r="1.8" fill="#FE8775"/></svg>Free resources</span></div>
@@ -821,7 +846,7 @@ button:focus-visible,
   </div>
 </section>
 
-<!-- ÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¦ ABOUT -->
+<!-- ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¦ ABOUT -->
 <section class="about" id="about"><div class="depth-circle dc-tr" aria-hidden="true"></div><div class="orbit-ring-bg orb1" aria-hidden="true"></div><div class="orbit-ring-bg orb2" aria-hidden="true"></div><div class="orbit-ring-bg orb3" aria-hidden="true"></div>
   <div class="about-inner">
     <div class="about-photo-col">
@@ -848,7 +873,7 @@ button:focus-visible,
   </div>
 </section>
 
-<!-- ÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ§ FINAL CTA -->
+<!-- ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ§ FINAL CTA -->
 <section class="final-cta section--dark">
   <div class="orbit-ring-bg orb2" aria-hidden="true"></div><div class="orbit-ring-bg orb3" aria-hidden="true"></div><div class="orbit-ring-bg orb2" aria-hidden="true"></div><div class="orbit-ring-bg orb3" aria-hidden="true"></div><div class="cta-glow"></div><div style="position:absolute;bottom:-20%;left:-5%;width:45%;height:120%;background:radial-gradient(ellipse,rgba(254,135,117,0.05) 0%,transparent 65%);pointer-events:none" aria-hidden="true"></div><div style="position:absolute;bottom:-20%;left:-5%;width:45%;height:120%;background:radial-gradient(ellipse,rgba(254,135,117,0.06) 0%,transparent 65%);pointer-events:none" aria-hidden="true"></div>
   <div class="cta-inner">
@@ -873,7 +898,7 @@ button:focus-visible,
     <div class="social-row">
       <a href="https://www.linkedin.com/company/trainerfy360/" class="sb" aria-label="LinkedIn" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
       <a href="https://www.instagram.com/trainerfy360" class="sb" aria-label="Instagram" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
-      <a href="https://x.com/trainerfy360" class="sb" aria-label="X" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+      
       <a href="https://www.youtube.com/@trainerfy360" class="sb" aria-label="YouTube" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
       <a href="https://wa.me/61449593933" class="sb" aria-label="WhatsApp" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.71.306 1.263.489 1.694.626.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884M20.52 3.449C18.27 1.197 15.279 0 12.057 0 5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.946L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.557 0 11.892-5.335 11.895-11.893a11.821 11.821 0 00-3.425-8.452z"/></svg></a>
     </div>
@@ -885,6 +910,16 @@ button:focus-visible,
 <button id="back-to-top" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">
   <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><polyline points="18 15 12 9 6 15"/></svg>
 </button>
+<script>
+function t360NavToggle(btn){
+  var open=btn.getAttribute('aria-expanded')==='true';
+  btn.setAttribute('aria-expanded',open?'false':'true');
+  var menu=document.getElementById('nav-mobile-menu');
+  menu.classList.toggle('is-open',!open);
+  menu.setAttribute('aria-hidden',open?'true':'false');
+  document.body.style.overflow=open?'':'hidden';
+}
+</script>
 <script>
 (function(){
   var btn = document.getElementById('back-to-top');
