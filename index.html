@@ -588,87 +588,318 @@ button:focus-visible,
 </section>
 
 <!-- ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ£ SOLUTION &mdash; ADDIE ORBIT -->
-<section class="solution" id="how-it-works">
-  <div class="sol-inner">
-    <div>
-      <div class="stag"><span class="t360-eyebrow"><svg class="t360-orbit-mark" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="6" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="12.2" cy="3.8" r="1.8" fill="#FE8775"/></svg>How it works</span></div>
-      <h2>ADDIE, reimagined for AI<span class="coral-dot">.</span></h2>
-      <p class="sol-desc">Powered by the AI-Enabled ADDIE Orbit<span class="tm">&trade;</span> &mdash; a methodology that maps AI into every phase of your design process, so you're using it intentionally rather than reactively.</p>
-      <div class="sol-pillars">
-        <div class="pillar">
-          <div class="p-icon pi1"><svg viewBox="0 0 14 14" fill="none"><rect x="1.5" y="8.5" width="2.5" height="4" rx="0.75" stroke="#6DB0F2" stroke-width="1.3"/><rect x="5.75" y="5.25" width="2.5" height="7.25" rx="0.75" stroke="#6DB0F2" stroke-width="1.3"/><rect x="10" y="1.5" width="2.5" height="11" rx="0.75" stroke="#6DB0F2" stroke-width="1.3"/></svg></div>
-          <div><span class="p-label">Your design process as the foundation</span>Structure, sequence and instructional rigour &mdash; the things AI still can't replace.</div>
-        </div>
-        <div class="pillar">
-          <div class="p-icon pi2"><svg viewBox="0 0 14 14" fill="none"><path d="M7 1.5l1.2 2.5 2.7.4-2 1.9.5 2.7-2.4-1.3-2.4 1.3.5-2.7-2-1.9 2.7-.4L7 1.5z" stroke="#6DB0F2" stroke-width="1.1" stroke-linejoin="round"/></svg></div>
-          <div><span class="p-label">AI as the accelerator</span>The right tools, at the right stage, with the right prompts.</div>
-        </div>
-        <div class="pillar">
-          <div class="p-icon pi3"><svg viewBox="0 0 14 14" fill="none"><circle cx="7" cy="4.25" r="2.5" stroke="#6DB0F2" stroke-width="1.3"/><path d="M1.5 12.5c0-3 2.5-5.5 5.5-5.5s5.5 2.5 5.5 5.5" stroke="#6DB0F2" stroke-width="1.3" stroke-linecap="round"/></svg></div>
-          <div><span class="p-label">Your expertise as the differentiator</span>Judgment, context, learning science &mdash; what only you can bring.</div>
-        </div>
-      </div>
-    </div>
-    <svg id="orbitSvg" viewBox="0 0 500 545" xmlns="http://www.w3.org/2000/svg"
-  style="width:100%;max-width:480px;display:block;margin:0 auto;overflow:visible">
-  <defs>
-    <path id="tp0" d="M 274.311,112.127 A 140,140 0 0,1 373.613,184.274" fill="none"/><path id="tp1" d="M 350.708,347.252 A 140,140 0 0,0 388.638,230.516" fill="none"/><path id="tp2" d="M 188.628,375.831 A 140,140 0 0,0 311.372,375.831" fill="none"/><path id="tp3" d="M 111.362,230.516 A 140,140 0 0,0 149.292,347.252" fill="none"/><path id="tp4" d="M 126.387,184.274 A 140,140 0 0,1 225.689,112.127" fill="none"/>
-    <filter id="csh"><feDropShadow dx="0" dy="2" stdDeviation="4" flood-opacity="0.07"/></filter>
-  </defs>
+<section class="orbit-section" aria-labelledby="orbit-h">
 
-  <!-- Rotating outer ring with text and coral dot -->
-  <g id="orbitRing">
-    <!-- Single full dashed circle that rotates -->
-    <circle cx="250" cy="250" r="212" fill="none" stroke="#0F2942"
-      stroke-width="1.3" stroke-dasharray="5,4" opacity="0.55"/>
-    <!-- Full circle path for text to ride on -->
-    <defs>
-      <path id="ringTextPath"
-        d="M 250,250 m -222,0 a 222,222 0 1,1 444,0 a 222,222 0 1,1 -444,0"/>
-    </defs>
-    <!-- "AI ACCELERATION LAYER" twice around the ring, 180&deg; apart -->
-    <text font-family="Open Sans,sans-serif" font-size="12" font-weight="600"
-      fill="#0F2942" opacity="0.6" letter-spacing="4" text-anchor="middle">
-      <textPath href="#ringTextPath" startOffset="25%">AI ACCELERATION LAYER</textPath>
-      <textPath href="#ringTextPath" startOffset="75%">AI ACCELERATION LAYER</textPath>
-    </text>
-    <!-- Pulsing coral dot rides on the ring -->
-    <circle id="coralDot" cx="250" cy="38" r="5.5" fill="#E07B54"/>
-  </g>
+<style>
 
-  <g id="orbitSegs" style="transform-origin:250px 250px">
-    <path d="M 253.728,72.039 A 178,178 0 0,1 418.099,191.462 L 330.272,222.046 A 85,85 0 0,0 251.780,165.019 Z" fill="#6BB8B0" class="oseg" style="animation-delay:0.10s"/><path d="M 420.403,198.552 A 178,178 0 0,1 357.619,391.782 L 301.391,317.705 A 85,85 0 0,0 331.372,225.432 Z" fill="#8DCCC6" class="oseg" style="animation-delay:0.22s"/><path d="M 351.587,396.165 A 178,178 0 0,1 148.413,396.165 L 201.489,319.798 A 85,85 0 0,0 298.511,319.798 Z" fill="#7AB8E0" class="oseg" style="animation-delay:0.34s"/><path d="M 142.381,391.782 A 178,178 0 0,1 79.597,198.552 L 168.628,225.432 A 85,85 0 0,0 198.609,317.705 Z" fill="#5BA8A0" class="oseg" style="animation-delay:0.46s"/><path d="M 81.901,191.462 A 178,178 0 0,1 246.272,72.039 L 248.220,165.019 A 85,85 0 0,0 169.728,222.046 Z" fill="#A8D0D0" class="oseg" style="animation-delay:0.58s"/>
-  </g>
+  .orbit-section{--navy:#143A5C;--teal-acc:#1A7A80;--blue-acc:#1377D8;--slate:#4A5963;--line:rgba(20,58,92,.12);--sblue:#EAF3FD;
 
-  <circle cx="250" cy="250" r="85" fill="white"/>
-  <circle cx="250" cy="250" r="73" fill="#0F2942"/>
+    font-family:inherit;
 
-  <text x="250" y="243" text-anchor="middle"
-    font-family="Open Sans,sans-serif" font-size="11" fill="rgba(255,255,255,0.6)"
-    letter-spacing="0.5">Performance</text>
-  <text x="250" y="263" text-anchor="middle"
-    font-family="Poppins,sans-serif" font-size="17" font-weight="700"
-    fill="white" letter-spacing="0.3">OUTCOMES</text>
+    color:var(--slate);max-width:1140px;margin:0 auto;padding:64px 24px;box-sizing:border-box}
 
-  <text font-family="Open Sans,sans-serif" font-size="13" font-weight="700" fill="white" letter-spacing="2" text-anchor="middle" opacity="0.9"><textPath href="#tp0" startOffset="50%">ANALYSE</textPath></text><text font-family="Open Sans,sans-serif" font-size="13" font-weight="700" fill="white" letter-spacing="2" text-anchor="middle" opacity="0.9"><textPath href="#tp1" startOffset="50%">DESIGN</textPath></text><text font-family="Open Sans,sans-serif" font-size="13" font-weight="700" fill="white" letter-spacing="2" text-anchor="middle" opacity="0.9"><textPath href="#tp2" startOffset="50%">DEVELOP</textPath></text><text font-family="Open Sans,sans-serif" font-size="13" font-weight="700" fill="white" letter-spacing="2" text-anchor="middle" opacity="0.9"><textPath href="#tp3" startOffset="50%">IMPLEMENT</textPath></text><text font-family="Open Sans,sans-serif" font-size="13" font-weight="700" fill="white" letter-spacing="2" text-anchor="middle" opacity="0.9"><textPath href="#tp4" startOffset="50%">EVALUATE</textPath></text>
+  .orbit-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
 
+  .orbit-eyebrow{display:flex;align-items:center;gap:9px;font-size:13px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--teal-acc);margin:0 0 16px}
 
-  <g filter="url(#csh)">
-    <rect x="6" y="444" width="232" height="88" rx="8" fill="white" stroke="#dce8ee" stroke-width="1"/>
-    <text x="122" y="476" text-anchor="middle"
-      font-family="Poppins,sans-serif" font-size="15" font-weight="700"
-      fill="#0F2942" letter-spacing="1">HUMAN EXPERTISE</text>
-    <text x="122" y="502" text-anchor="middle"
-      font-family="Open Sans,sans-serif" font-size="13" fill="#3A9EA5">Judgement &#x2022; Context &#x2022; Craft</text>
-    <rect x="262" y="444" width="232" height="88" rx="8" fill="white" stroke="#dce8ee" stroke-width="1"/>
-    <text x="378" y="476" text-anchor="middle"
-      font-family="Poppins,sans-serif" font-size="15" font-weight="700"
-      fill="#0F2942" letter-spacing="1">GOVERNANCE &amp; QUALITY</text>
-    <text x="378" y="502" text-anchor="middle"
-      font-family="Open Sans,sans-serif" font-size="13" fill="#3A9EA5">Review &#x2022; Compliance &#x2022; Validation</text>
-  </g>
-</svg>
+  .orbit-eyebrow .ring-ic{position:relative;width:15px;height:15px;border:2px solid var(--teal-acc);border-radius:50%;display:inline-block;flex:0 0 auto}
+
+  .orbit-eyebrow .ring-ic::after{content:"";position:absolute;top:-3px;right:-3px;width:6px;height:6px;border-radius:50%;background:#FE8775}
+
+  #orbit-h{font-size:34px;line-height:1.15;font-weight:600;color:var(--navy);margin:0 0 8px}
+
+  #orbit-h .dot{color:#FE8775}
+
+  .orbit-kicker{font-size:16px;font-weight:600;font-style:italic;color:var(--teal-acc);margin:0 0 14px}
+
+  .orbit-lead{font-size:16px;line-height:1.65;color:var(--slate);margin:0 0 22px;max-width:34em}
+
+  .orbit-pts{list-style:none;padding:0;margin:0}
+
+  .orbit-pts li{display:flex;gap:13px;margin:0 0 16px}
+
+  .orbit-ic{flex:0 0 auto;width:34px;height:34px;border-radius:9px;background:var(--sblue);display:flex;align-items:center;justify-content:center;color:var(--blue-acc)}
+
+  .orbit-ic svg{width:18px;height:18px}
+
+  .orbit-pt-t{font-size:15.5px;font-weight:600;color:var(--blue-acc);margin:0 0 2px}
+
+  .orbit-pt-d{font-size:14.5px;line-height:1.55;color:var(--slate);margin:0}
+
+  .orbit-vis{display:flex;flex-direction:column;align-items:center}
+
+  .orbit-vis svg.wheel{width:100%;max-width:430px;height:auto}
+
+  .wl{font-size:15px;font-weight:700;letter-spacing:1.5px;fill:#143A5C;text-anchor:middle;dominant-baseline:middle;pointer-events:none}
+
+  .accel-label{font-size:11px;letter-spacing:2.5px;fill:#4A5963;font-weight:600}
+
+  .dlab-t{font-size:12px;font-weight:700;letter-spacing:.8px;fill:#143A5C;text-anchor:middle}
+
+  .dlab-s{font-size:11px;font-weight:500;fill:#1A7A80;text-anchor:middle}
+
+  .dbox{cursor:pointer}
+
+  .dbox rect{transition:stroke .18s ease}
+
+  .dbox:hover rect,.dbox:focus rect{stroke:#143A5C;stroke-width:2}
+
+  .dbox:focus{outline:none}
+
+  .core-sub{font-size:11px;letter-spacing:.5px;fill:#C3D0DA;text-anchor:middle}
+
+  .core-main{font-size:17px;font-weight:700;letter-spacing:1px;fill:#fff;text-anchor:middle}
+
+  .wedge{cursor:pointer;transform-box:fill-box;transform-origin:center;transition:transform .22s ease,filter .2s}
+
+  .play .wedge{animation:obpop .55s cubic-bezier(.2,.8,.3,1) backwards}
+
+  .wedge:hover,.wedge:focus{transform:translate(var(--tx),var(--ty)) scale(1.03);filter:brightness(1.1)}
+
+  .wedge:focus{outline:none}
+
+  .wedge:focus path{stroke:#143A5C;stroke-width:3}
+
+  .nudge .wedge{animation:obnudge .7s ease}
+
+  @keyframes obpop{from{opacity:0;transform:scale(.55)}to{opacity:1;transform:scale(1)}}
+
+  @keyframes obnudge{0%,100%{transform:translate(0,0)}45%{transform:translate(var(--tx),var(--ty)) scale(1.02)}}
+
+  .ring-spin{transform-box:fill-box;transform-origin:center;animation:obspin 60s linear infinite}
+
+  @keyframes obspin{to{transform:rotate(360deg)}}
+
+  .core-pulse{transform-box:fill-box;transform-origin:center;animation:obpulse 3.8s ease-in-out infinite}
+
+  @keyframes obpulse{0%,100%{transform:scale(1)}50%{transform:scale(1.045)}}
+
+  .orbit-cc{display:flex;align-items:center;justify-content:center;gap:9px;background:var(--navy);color:#fff;border-radius:12px;padding:0 18px;height:50px;width:470px;max-width:100%;box-sizing:border-box;font-size:14px;white-space:nowrap;overflow:hidden;margin:18px auto 12px;box-shadow:0 6px 18px rgba(20,58,92,.16)}
+
+  .orbit-cc .cc-ic{flex:0 0 auto;display:flex;color:#7FD3C4}
+
+  .orbit-cc b{color:#9FE3D6;font-weight:600}
+
+  .orbit-cards{display:flex;flex-wrap:wrap;gap:16px;justify-content:center;margin-top:4px;width:100%}
+
+  .pillar{flex:1 1 200px;border:1px solid var(--line);border-radius:14px;padding:16px 18px;background:#fff}
+
+  .pillar h3{font-size:13px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--navy);margin:0 0 6px}
+
+  .pillar p{font-size:14px;color:var(--teal-acc);margin:0;font-weight:500}
+
+  @media (max-width:860px){.orbit-grid{grid-template-columns:1fr;gap:36px}#orbit-h{font-size:28px}}
+
+  @media (max-width:520px){.orbit-cc{white-space:normal;height:auto;min-height:62px;width:100%;font-size:13px}}
+
+  @media (prefers-reduced-motion:reduce){
+
+    .ring-spin,.core-pulse{animation:none}
+
+    .play .wedge,.nudge .wedge{animation:none}
+
+    .wedge:hover,.wedge:focus{transform:none}
+
+  }
+
+</style>
+
+<div class="orbit-grid">
+
+  <div class="orbit-copy">
+
+    <p class="orbit-eyebrow"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" focusable="false" style="flex:0 0 auto"><circle cx="8" cy="8" r="6" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="12.2" cy="3.8" r="1.8" fill="#FE8775"/></svg>How it works</p>
+
+    <h2 id="orbit-h">Trusted methodology. Modern workflow<span class="dot">.</span></h2>
+
+    <p class="orbit-kicker">We didn&#8217;t replace it. We reimagined it for the AI era.</p>
+
+    <p class="orbit-lead">The AI-Enabled ADDIE Orbit&#8482; combines the proven structure of ADDIE with AI-powered workflows, human expertise and quality governance&#8212;helping learning teams work smarter, faster and with greater confidence.</p>
+
+    <ul class="orbit-pts">
+
+      <li><span class="orbit-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="20" x2="4" y2="12"/><line x1="10" y1="20" x2="10" y2="6"/><line x1="16" y1="20" x2="16" y2="14"/><line x1="20" y1="20" x2="20" y2="9"/></svg></span>
+
+        <div><p class="orbit-pt-t">Your design process as the foundation</p><p class="orbit-pt-d">Structure, sequence and instructional rigour &#8212; the things AI still can&#8217;t replace.</p></div></li>
+
+      <li><span class="orbit-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 3 14.5 9 21 9.5 16 13.5 17.5 20 12 16.5 6.5 20 8 13.5 3 9.5 9.5 9"/></svg></span>
+
+        <div><p class="orbit-pt-t">AI as the accelerator</p><p class="orbit-pt-d">The right tools, at the right stage, with the right prompts.</p></div></li>
+
+      <li><span class="orbit-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M5 21c0-3.9 3.1-7 7-7s7 3.1 7 7"/></svg></span>
+
+        <div><p class="orbit-pt-t">Your expertise as the differentiator</p><p class="orbit-pt-d">Judgement, context, learning science &#8212; what only you can bring.</p></div></li>
+
+    </ul>
+
   </div>
+
+  <div class="orbit-vis">
+
+    <svg class="wheel" viewBox="0 0 440 515" role="img" aria-labelledby="wt wd">
+
+      <title id="wt">The AI-Enabled ADDIE Orbit</title>
+
+      <desc id="wd">Five learning-design phases &#8212; analyse, design, develop, implement, evaluate &#8212; orbit a central outcomes core, inside an AI acceleration layer, with human expertise and quality governance running through every phase. Select a phase to read where AI helps and where you stay in charge.</desc>
+
+      <defs><path id="accelArc" d="M 46.79 120.00 A 200.0 200.0 0 0 1 393.21 120.00"/></defs>
+
+      <g class="ring-spin">
+
+        <circle cx="220.0" cy="220.0" r="200.0" fill="none" stroke="#C7D0D8" stroke-width="2" stroke-dasharray="2 9" stroke-linecap="round"/>
+
+        <circle cx="320.00" cy="46.79" r="6" fill="#FE8775"/>
+
+      </g>
+
+      <text class="accel-label"><textPath href="#accelArc" startOffset="50%" text-anchor="middle">AI ACCELERATION LAYER</textPath></text>
+
+      <g class="wedge" tabindex="0" role="button" style="--tx:4.11px;--ty:-5.66px;animation-delay:0.08s"
+
+         data-name="Analyse" data-cap="AI speeds research; you set the strategy." aria-label="Analyse. AI speeds research; you set the strategy.">
+
+        <path d="M 223.46 55.04 A 165.0 165.0 0 0 1 375.82 165.74 L 306.88 189.74 A 92.0 92.0 0 0 0 221.93 128.02 Z" fill="#A6D4CB"/>
+
+        <text x="295.53" y="116.04" transform="rotate(36.0 295.53 116.04)" class="wl">ANALYSE</text>
+
+      </g>
+
+      <g class="wedge" tabindex="0" role="button" style="--tx:6.66px;--ty:2.16px;animation-delay:0.21s"
+
+         data-name="Design" data-cap="AI drafts structure; you keep the rigour." aria-label="Design. AI drafts structure; you keep the rigour.">
+
+        <path d="M 377.96 172.31 A 165.0 165.0 0 0 1 319.76 351.43 L 275.62 293.28 A 92.0 92.0 0 0 0 308.07 193.41 Z" fill="#8AC8BC"/>
+
+        <text x="342.21" y="259.71" transform="rotate(288.0 342.21 259.71)" class="wl">DESIGN</text>
+
+      </g>
+
+      <g class="wedge" tabindex="0" role="button" style="--tx:0.00px;--ty:7.00px;animation-delay:0.34s"
+
+         data-name="Develop" data-cap="AI speeds first drafts; you protect quality." aria-label="Develop. AI speeds first drafts; you protect quality.">
+
+        <path d="M 314.17 355.49 A 165.0 165.0 0 0 1 125.83 355.49 L 167.49 295.55 A 92.0 92.0 0 0 0 272.51 295.55 Z" fill="#74BDB0"/>
+
+        <text x="220.00" y="348.50" transform="rotate(360.0 220.00 348.50)" class="wl">DEVELOP</text>
+
+      </g>
+
+      <g class="wedge" tabindex="0" role="button" style="--tx:-6.66px;--ty:2.16px;animation-delay:0.47s"
+
+         data-name="Implement" data-cap="AI builds the assets; you guide rollout." aria-label="Implement. AI builds the assets; you guide rollout.">
+
+        <path d="M 120.24 351.43 A 165.0 165.0 0 0 1 62.04 172.31 L 131.93 193.41 A 92.0 92.0 0 0 0 164.38 293.28 Z" fill="#6BB8AA"/>
+
+        <text x="97.79" y="259.71" transform="rotate(432.0 97.79 259.71)" class="wl">IMPLEMENT</text>
+
+      </g>
+
+      <g class="wedge" tabindex="0" role="button" style="--tx:-4.11px;--ty:-5.66px;animation-delay:0.60s"
+
+         data-name="Evaluate" data-cap="AI summarises data; you judge the meaning." aria-label="Evaluate. AI summarises data; you judge the meaning.">
+
+        <path d="M 64.18 165.74 A 165.0 165.0 0 0 1 216.54 55.04 L 218.07 128.02 A 92.0 92.0 0 0 0 133.12 189.74 Z" fill="#62B2A4"/>
+
+        <text x="144.47" y="116.04" transform="rotate(324.0 144.47 116.04)" class="wl">EVALUATE</text>
+
+      </g>
+
+      <g class="core-pulse">
+
+        <circle cx="220.0" cy="220.0" r="72.0" fill="#143A5C"/>
+
+        <text x="220.0" y="213.0" class="core-sub">Performance</text>
+
+        <text x="220.0" y="233.0" class="core-main">OUTCOMES</text>
+
+      </g>
+
+      <g class="dgroup">
+
+        <line x1="106" y1="383" x2="112" y2="432" stroke="#C7D0D8" stroke-width="1.5" stroke-dasharray="2 4"/>
+
+        <line x1="334" y1="383" x2="328" y2="432" stroke="#C7D0D8" stroke-width="1.5" stroke-dasharray="2 4"/>
+
+        <g class="dbox" tabindex="0" role="button" data-name="Human expertise" data-cap="the human side AI can&#8217;t replace." aria-label="Human expertise. The human side AI can&#8217;t replace.">
+
+          <rect x="12" y="432" width="200" height="62" rx="12" fill="#fff" stroke="#DCE2E7"/>
+
+          <text x="112" y="459" class="dlab-t">HUMAN EXPERTISE</text>
+
+          <text x="112" y="478" class="dlab-s">Judgement &#8226; Context &#8226; Craft</text>
+
+        </g>
+
+        <g class="dbox" tabindex="0" role="button" data-name="Governance &amp; quality" data-cap="keeping AI output consistent." aria-label="Governance and quality. Keeping AI output consistent.">
+
+          <rect x="228" y="432" width="200" height="62" rx="12" fill="#fff" stroke="#DCE2E7"/>
+
+          <text x="328" y="459" class="dlab-t">GOVERNANCE &amp; QUALITY</text>
+
+          <text x="328" y="478" class="dlab-s">Review &#8226; Consistency &#8226; Validation</text>
+
+        </g>
+
+      </g>
+
+    </svg>
+
+    <div class="orbit-cc"><span class="cc-ic"><svg viewBox='0 0 24 24' width='17' height='17' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M7 3v12l3-3 2.5 5 2-1-2.4-4.8H16z'/></svg></span><span id="orbit-cap">Hover or tap a phase to explore.</span></div>
+
+  </div>
+
+</div>
+
+<script>
+
+(function(){
+
+  var sec=document.querySelector('.orbit-section');
+
+  if(!sec) return;
+
+  var vis=sec.querySelector('.orbit-vis');
+
+  var cap=sec.querySelector('#orbit-cap'), base=cap.innerHTML;
+
+  var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+
+  sec.querySelectorAll('.wedge,.dbox').forEach(function(w){
+
+    function show(){cap.innerHTML='<b>'+w.getAttribute('data-name')+'</b> &#8212; '+w.getAttribute('data-cap');}
+
+    function clr(){cap.innerHTML=base;}
+
+    w.addEventListener('mouseenter',show); w.addEventListener('mouseleave',clr);
+
+    w.addEventListener('focus',show); w.addEventListener('blur',clr);
+
+    w.addEventListener('click',show);
+
+    w.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();show();}});
+
+  });
+
+  function activate(){
+
+    vis.classList.add('play');
+
+    if(!reduce){setTimeout(function(){vis.classList.add('nudge');setTimeout(function(){vis.classList.remove('nudge');},900);},1400);}
+
+  }
+
+  if('IntersectionObserver' in window){
+
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){activate();io.disconnect();}});},{threshold:.3});
+
+    io.observe(sec);
+
+  } else { activate(); }
+
+})();
+
+</script>
+
 </section>
 
 <!-- ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¤ FRAMEWORK &mdash; C.R.A.F.T. -->
