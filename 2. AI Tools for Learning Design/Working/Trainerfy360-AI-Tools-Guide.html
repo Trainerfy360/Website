@@ -1,0 +1,913 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Trainerfy360 AI Tools for Learning Design: What to Use and When</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --navy:#0F2942;--teal:#3A9EA5;--coral:#E07B54;--blue:#6DB0F2;
+  --slate:#4a5963;--lgrey:#f4f5f7;--border:#e2e5e9;
+  --acc-teal:#1a7a80;--acc-coral:#B5512A;--acc-blue:#2563a8;--coral-text:#DC7048;
+  --page-w:210mm;--page-h:297mm;--margin:14mm 16mm;
+}
+body{font-family:'Open Sans',sans-serif;font-size:12px;color:var(--slate);background:#e8eaed;line-height:1.6;}
+h2{font-family:'Poppins',sans-serif;font-weight:700;font-size:22px;color:var(--navy);line-height:1.2;margin-bottom:8px;}
+p{margin-bottom:0;}
+a{color:var(--acc-teal);}
+
+/* ── PRINT BAR ── */
+.print-bar{position:fixed;top:0;left:0;right:0;z-index:100;background:var(--navy);padding:8px 24px;display:flex;align-items:center;justify-content:space-between;}
+.print-bar-title{color:white;font-size:12px;font-weight:600;}
+.print-bar-note{color:rgba(255,255,255,0.6);font-size:11px;}
+.btn-print{background:var(--acc-teal);color:white;border:none;border-radius:5px;padding:6px 14px;font-size:11px;font-weight:700;cursor:pointer;}
+
+/* ── PAGE SHELL ── */
+.pages-wrap{margin-top:60px;display:flex;flex-direction:column;align-items:center;gap:24px;padding:24px 0;}
+.page{width:var(--page-w);min-height:var(--page-h);background:white;position:relative;box-shadow:0 4px 40px rgba(0,0,0,0.18);border-radius:3px;overflow:hidden;page-break-after:always;break-after:page;box-sizing:border-box;}
+.page-inner{padding:var(--margin);min-height:var(--page-h);display:flex;flex-direction:column;}
+
+/* ── HEADER & FOOTER, exact CRAFT match ── */
+.page-header{display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border);padding-bottom:10px;margin-bottom:20px;}
+.page-logo{height:28px;width:auto;}
+.page-num{font-size:10px;color:var(--slate);font-weight:600;}
+.page-footer{margin-top:auto;padding-top:12px;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;}
+.page-footer-copy{font-size:10px!important;color:#4a5963!important;opacity:1!important;}
+.page-footer-url{font-size:10px!important;color:var(--acc-teal)!important;opacity:1!important;font-weight:700;text-decoration:none;}
+
+/* ── TYPOGRAPHY ── */
+.subtitle{font-family:'Poppins',sans-serif;font-weight:600;font-size:13px;color:var(--acc-teal);margin-bottom:8px;}
+.cover-stop{color:var(--coral-text);}
+hr.teal-div{width:48px;height:2px;background:var(--teal);border:none;margin:8px 0 12px;-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important;}
+hr.divider{border:none;border-top:1px solid var(--border);margin:18px 0;}
+
+/* ── COVER ── */
+.cover-inner{background:white;min-height:var(--page-h);padding:12mm 18mm 10mm;display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden;border-top:5px solid var(--teal);box-sizing:border-box;-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important;}
+.cover-top{display:flex;flex-direction:column;}
+.cover-logo{height:52px;width:auto;max-width:260px;object-fit:contain;object-position:left center;display:block;margin-left:0;margin-bottom:0;}
+.cover-logo-rule{width:48px;height:3px;background:var(--teal);border-radius:2px;margin:20px 0 26px 18px;-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important;}
+.cover-h1{font-family:'Poppins',sans-serif;font-weight:800;font-size:44px;line-height:1.0;color:var(--navy);margin-bottom:12px;letter-spacing:-0.025em;}
+.cover-h1 span{color:var(--navy);}
+.cover-h1 .cover-tm{font-size:0.5em;vertical-align:super;font-weight:800;color:var(--coral-text)!important;}
+.cover-tagline-divider{width:100%;height:1px;background:var(--border);margin:20px 0;}
+.cover-h2{font-family:'Poppins',sans-serif;font-weight:600;font-size:18px;line-height:1.3;color:var(--slate);margin-bottom:6px;}
+.cover-h3{font-family:'Poppins',sans-serif;font-weight:500;font-size:12px;line-height:1.3;color:var(--acc-teal);margin-bottom:0;letter-spacing:0.04em;text-transform:uppercase;}
+.cover-tagline{font-size:14px;color:var(--slate);font-weight:500;margin-bottom:0;line-height:1.6;}
+.cover-stats-wrap{margin-top:20px;}
+.craft-stats{display:grid;grid-template-columns:repeat(4,1fr);background:var(--navy);overflow:hidden;border-radius:8px;-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important;}
+.craft-stat{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:10px 10px;border-right:1px solid rgba(255,255,255,0.12);text-align:center;}
+.craft-stat:last-child{border-right:none;}
+.craft-stat-icon{width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 5px;flex-shrink:0;-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important;}
+.craft-stat-icon svg{width:12px;height:12px;display:block;}
+.craft-stat-val{font-family:'Poppins',sans-serif;font-size:12px;font-weight:800;color:white;line-height:1;}
+.craft-stat-lbl{font-size:10px;color:rgba(255,255,255,0.85);margin-top:2px;font-weight:600;letter-spacing:0.02em;}
+.cover-features{display:flex;flex-direction:column;gap:0;margin-top:18px;border:1.5px solid var(--border);border-radius:10px;overflow:hidden;}
+.cover-feature{display:flex;align-items:center;gap:14px;font-size:12px;font-weight:600;color:var(--navy);padding:13px 18px;border-bottom:1px solid var(--border);line-height:1.4;}
+.cover-feature:last-child{border-bottom:none;}
+.cf-icon{width:24px;height:24px;border-radius:50%;background:var(--acc-teal);display:flex;align-items:center;justify-content:center;font-size:11px;flex-shrink:0;color:white;font-weight:800;font-family:'Poppins',sans-serif;-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important;}
+.cover-footer{padding-top:12px;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;margin-top:12px;}
+.cover-footer-text{font-size:10px!important;color:#4a5963!important;}
+.cover-footer-url{font-size:10px!important;color:var(--acc-teal)!important;font-weight:700;text-decoration:none;}
+
+/* ── CALLOUT / NOTE BOXES ── */
+.note-teal{border-left:4px solid var(--teal);background:#eef9fa;border-radius:0 8px 8px 0;padding:11px 15px;margin-bottom:14px;break-inside:avoid;-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important;}
+.note-coral{border-left:4px solid var(--coral);background:rgba(224,123,84,0.06);border-radius:0 8px 8px 0;padding:11px 15px;margin-bottom:14px;break-inside:avoid;-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important;}
+.note-navy{border-left:4px solid var(--navy);background:#f4f5f7;border-radius:0 8px 8px 0;padding:11px 15px;margin-bottom:14px;break-inside:avoid;-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important;}
+.note-title{font-family:'Poppins',sans-serif;font-size:12px;font-weight:700;color:var(--navy);margin-bottom:5px;display:block;}
+.note-body{font-size:11.5px;color:var(--slate);line-height:1.65;}
+.note-body strong{color:var(--navy);}
+
+/* ── BULLET LISTS, all use coral dot ── */
+.bullet-list{list-style:none;padding:0;margin:0;}
+.bullet-list li{font-size:11.5px;color:var(--slate);padding:4px 0 4px 16px;position:relative;line-height:1.6;border-bottom:1px solid var(--border);}
+.bullet-list li:last-child{border-bottom:none;}
+.bullet-list li::before{content:'•';position:absolute;left:2px;color:var(--acc-coral);font-weight:900;font-size:13px;line-height:1.3;}
+.bullet-list-plain li{border-bottom:none;}
+.cl2-cta-block .bullet-list{margin-bottom:14px;}
+.cl2-cta-block .cl2-cta-bar-coral,.cl2-cta-block .cl2-cta-bar-teal{margin-top:auto;}
+
+/* ── TABLES ── */
+.t-matrix{width:100%;border-collapse:collapse;font-size:11px;margin-bottom:16px;}
+.t-matrix thead tr{background:var(--navy);-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important;}
+.t-matrix th{padding:6px 11px;text-align:left;font-family:'Poppins',sans-serif;font-size:10px;font-weight:700;color:white;letter-spacing:0.06em;text-transform:uppercase;}
+.t-matrix td{padding:2.5px 10px;border-bottom:1px solid var(--border);vertical-align:top;font-size:11px;color:var(--slate);line-height:1.3;}
+.t-matrix tr:last-child td{border-bottom:none;}
+.t-matrix td:first-child{color:var(--navy);}
+
+.t-matrix td:nth-child(4){font-style:italic;}
+
+/* ── PROBLEM TABLE ── */
+.problem-table{width:100%;border-collapse:collapse;margin-bottom:18px;}
+.problem-table th{background:var(--navy);color:white;padding:9px 14px;text-align:left;font-family:'Poppins',sans-serif;font-size:10px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important;}
+.problem-table td{padding:12px 14px;border-bottom:1px solid var(--border);font-size:11.5px;color:var(--slate);line-height:1.6;vertical-align:top;}
+.problem-table tr:last-child td{border-bottom:none;}
+
+/* ── STACK BOX ── */
+.stack-section{border:1.5px solid var(--border);border-top:3px solid var(--teal);border-radius:10px;overflow:hidden;margin-bottom:18px;-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important;}
+.stack-header{padding:11px 18px;text-align:center;background:#eef9fa;border-bottom:1px solid var(--border);-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important;}
+.stack-header-title{font-family:'Poppins',sans-serif;font-weight:700;font-size:13px;color:var(--navy);}
+.stack-header-sub{font-size:11px;color:var(--slate);font-style:italic;margin-top:2px;}
+.stack-grid{display:grid;grid-template-columns:1fr 1fr;background:white;}
+.stack-cell{padding:9px 15px;border-bottom:1px solid var(--border);border-right:1px solid var(--border);display:flex;align-items:center;gap:10px;}
+.stack-cell:nth-child(even){border-right:none;}
+.stack-cell-last{border-bottom:none;}
+.stack-cell-label{font-family:'Poppins',sans-serif;font-size:10px;font-weight:700;color:var(--navy);margin-bottom:1px;text-transform:uppercase;letter-spacing:0.06em;}
+.stack-cell-value{font-size:11.5px;color:var(--acc-teal);font-weight:600;}
+
+/* ── STARTER BOX ── */
+.starter-box{border:1.5px solid var(--border);border-top:3px solid var(--navy);border-radius:10px;padding:13px 17px;margin-bottom:18px;-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important;}
+.starter-box-title{font-family:'Poppins',sans-serif;font-size:12px;font-weight:700;color:var(--navy);margin-bottom:8px;}
+
+/* ── ADDIE TABLE ── */
+.addie-table{width:100%;border-collapse:collapse;margin-bottom:16px;}
+.addie-table thead tr{background:var(--navy);-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important;}
+.addie-table th{padding:9px 14px;text-align:left;font-family:'Poppins',sans-serif;font-size:10px;font-weight:700;color:white;letter-spacing:0.06em;text-transform:uppercase;}
+.addie-table td{padding:11px 14px;border-bottom:1px solid var(--border);vertical-align:top;font-size:11.5px;color:var(--slate);line-height:1.6;}
+.addie-table tr:last-child td{border-bottom:none;}
+.addie-stage{display:inline-block;font-family:'Poppins',sans-serif;font-weight:700;font-size:10.5px;border-radius:4px;padding:3px 9px;-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important;}
+.stage-a{background:rgba(15,41,66,0.08);color:var(--navy);}
+.stage-d{background:rgba(58,158,165,0.1);color:var(--acc-teal);}
+.stage-de{background:rgba(109,176,242,0.15);color:var(--acc-blue);}
+.stage-i{background:rgba(224,123,84,0.1);color:var(--acc-coral);}
+.stage-e{background:rgba(45,122,106,0.08);color:#2d7a6a;}
+
+/* ── SCENARIOS TABLE ── */
+.scenarios-table{width:100%;border-collapse:collapse;margin-bottom:16px;}
+.scenarios-table thead tr{background:var(--navy);-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important;}
+.scenarios-table th{padding:9px 14px;text-align:left;font-family:'Poppins',sans-serif;font-size:10px;font-weight:700;color:white;letter-spacing:0.06em;text-transform:uppercase;}
+.scenarios-table td{padding:9px 13px;border-bottom:1px solid var(--border);vertical-align:top;font-size:11px;line-height:1.5;}
+.scenarios-table tr:last-child td{border-bottom:none;}
+.scenarios-table td:first-child{color:var(--navy);}
+
+.scenarios-table td:nth-child(3){font-style:italic;color:var(--slate);}
+
+/* ── MISTAKES BOX ── */
+.mistakes-box{border:1.5px solid var(--border);border-top:3px solid var(--coral);border-radius:10px;padding:13px 17px;-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important;}
+.mistakes-title{font-family:'Poppins',sans-serif;font-size:10px;font-weight:700;color:var(--acc-coral);margin-bottom:10px;text-transform:uppercase;letter-spacing:0.1em;}
+
+/* ── PAGE 7 WORKFLOW ── */
+.workflow-input-box{border:1.5px solid var(--border);border-radius:8px;padding:11px 16px;margin-bottom:16px;background:#f9fafb;-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important;}
+.workflow-flow-table{width:100%;border-collapse:collapse;margin:0 0 16px;}
+.workflow-flow-table td{padding:0;vertical-align:top;}
+.wf-box{background:white;border:1.5px solid var(--border);border-top:3px solid var(--teal);border-radius:10px;padding:9px 16px;-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important;}
+.wf-box-title{font-family:'Poppins',sans-serif;font-weight:700;font-size:12px;color:var(--navy);}
+.wf-box-sub{font-size:10px;color:var(--acc-teal);margin-top:1px;}
+.wf-label{font-size:10.5px;font-style:italic;color:var(--slate);padding-left:12px;padding-top:12px;}
+.wf-connector{text-align:center;font-size:12px;color:var(--acc-teal);padding:2px 0;font-weight:700;-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important;}
+
+.workflow-steps{display:flex;flex-direction:column;gap:8px;margin:16px 0;}
+.ws-step{display:flex;align-items:flex-start;gap:10px;padding:8px 13px;background:#f4f5f7;border-radius:10px;border-left:3px solid var(--teal);-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important;}
+.ws-line{font-size:11px;color:var(--slate);line-height:1.6;margin:0;padding-top:3px;}
+.ws-line strong{font-family:'Poppins',sans-serif;font-size:11px;font-weight:700;color:var(--navy);}
+.ws-line .ws-tool{color:var(--acc-teal);font-weight:600;}
+
+/* ── SCORECARD TABLE ── */
+.scorecard-table{width:100%;border-collapse:collapse;margin-bottom:14px;}
+.scorecard-table thead tr{background:var(--navy);-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important;}
+.scorecard-table th{padding:9px 12px;text-align:left;font-family:'Poppins',sans-serif;font-size:10px;font-weight:700;color:white;letter-spacing:0.06em;text-transform:uppercase;}
+.scorecard-table td{padding:7px 11px;border-bottom:1px solid var(--border);vertical-align:middle;font-size:11px;line-height:1.4;}
+.scorecard-table tr:last-child td{border-bottom:none;}
+.scorecard-table td:first-child{font-weight:600;color:var(--navy);}
+
+/* ── QUICK SELECT TABLE ── */
+.quick-select-table{width:100%;border-collapse:collapse;}
+.quick-select-table thead tr{background:var(--navy);-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important;}
+.quick-select-table th{padding:9px 12px;text-align:left;font-family:'Poppins',sans-serif;font-size:10px;font-weight:700;color:white;letter-spacing:0.06em;text-transform:uppercase;}
+.quick-select-table td{padding:8px 12px;border-bottom:1px solid var(--border);vertical-align:middle;font-size:11.5px;line-height:1.5;color:var(--slate);}
+.quick-select-table tr:last-child td{border-bottom:none;}
+
+
+/* ── ADDIE PHASE MINI CARDS ── */
+.addie-cards{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:10px;}
+.addie-card{border:1.5px solid var(--border);border-radius:10px;padding:11px 10px;break-inside:avoid;-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important;}
+.addie-card-a{border-top:3px solid var(--navy);}
+.addie-card-d{border-top:3px solid var(--teal);}
+.addie-card-de{border-top:3px solid var(--acc-blue);}
+.addie-card-i{border-top:3px solid var(--acc-coral);}
+.addie-card-e{border-top:3px solid #2d7a6a;}
+.addie-card-name{font-family:'Poppins',sans-serif;font-weight:700;font-size:11px;margin-bottom:5px;}
+.addie-card-a .addie-card-name{color:var(--navy);}
+.addie-card-d .addie-card-name{color:var(--acc-teal);}
+.addie-card-de .addie-card-name{color:var(--acc-blue);}
+.addie-card-i .addie-card-name{color:var(--acc-coral);}
+.addie-card-e .addie-card-name{color:#2d7a6a;}
+.addie-card-body{font-size:10.5px;color:var(--slate);line-height:1.5;}
+
+/* ── CLOSING PAGE ── */
+.cl2-inner{background:white;min-height:var(--page-h);display:flex;flex-direction:column;overflow:hidden;box-sizing:border-box;-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important;}
+.cl2-header{background:var(--navy);padding:16px 18mm 14px;flex-shrink:0;-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important;}
+.cl2-eyebrow{font-size:10px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#6DB2AE;display:flex;align-items:center;gap:8px;margin-bottom:6px;}
+.cl2-eyebrow::before{content:'';width:16px;height:2px;background:var(--teal);border-radius:2px;flex-shrink:0;-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important;}
+.cl2-headline{font-family:'Poppins',sans-serif;font-weight:800;font-size:28px;line-height:1.12;color:white;letter-spacing:-0.03em;margin:0;}
+.cl2-headline span{color:#FE8775;}
+.cl2-subheadline{font-family:'Open Sans',sans-serif;font-size:12px;color:rgba(255,255,255,0.88);margin-top:4px;font-weight:400;font-style:italic;}
+/* Bio zone */
+.cl2-bio-zone{display:grid;grid-template-columns:210px 1fr;gap:36px;padding:24px 18mm 20px;align-items:center;border-bottom:1px solid var(--border);flex-shrink:0;}
+.cl2-photo-col{display:flex;flex-direction:column;align-items:center;text-align:center;}
+.cl2-photo{width:175px;height:auto;display:block;margin-bottom:10px;}
+.cl2-name{font-family:'Poppins',sans-serif;font-weight:700;font-size:13px;color:var(--navy);margin-bottom:2px;}
+.cl2-title{font-size:11.5px;color:var(--acc-teal);font-weight:600;margin-bottom:2px;}
+.cl2-org{font-size:11px;color:var(--slate);}
+.cl2-story{font-size:12px;color:var(--slate);line-height:1.75;margin-bottom:8px;}
+.cl2-story:last-child{margin-bottom:0;}
+.cl2-story strong{color:var(--navy);font-weight:600;}
+/* Stats strip */
+.cl2-stats-strip{display:grid;grid-template-columns:repeat(3,1fr);border-bottom:1px solid var(--border);flex-shrink:0;-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important;}
+.cl2-stat-item{padding:18px 0;text-align:center;border-right:1px solid var(--border);display:flex;flex-direction:column;align-items:center;gap:3px;}
+.cl2-stat-item:last-child{border-right:none;}
+.cl2-stat-icon{color:var(--acc-teal);margin-bottom:2px;}
+.cl2-stat-val{font-family:'Poppins',sans-serif;font-size:22px;font-weight:800;color:var(--navy);line-height:1.1;}
+.cl2-stat-lbl{font-size:10.5px;color:var(--slate);font-weight:500;}
+/* Body / CTAs */
+.cl2-body{padding:20px 18mm 0;flex:1;display:flex;flex-direction:column;gap:16px;}
+.cl2-cta-block{border:1.5px solid var(--border);border-radius:10px;padding:18px 20px;display:flex;flex-direction:column;-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important;}
+.cl2-cta-block-coral{border-top:3px solid #1A7A80;}
+.cl2-cta-block-teal{border-top:3px solid #1377D8;}
+.cl2-cta-block-title{font-family:'Poppins',sans-serif;font-size:12.5px;font-weight:700;color:var(--navy);margin-bottom:10px;text-align:center;}
+.cl2-cta-bar-coral{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;margin:12px 0 0;box-sizing:border-box;min-height:70px;background:#1A7A80;border-radius:6px;padding:10px 18px;-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important;}
+.cl2-cta-bar-teal{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;margin:12px 0 0;box-sizing:border-box;min-height:70px;background:#1377D8;border-radius:6px;padding:10px 18px;-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important;}
+.cl2-cta-bar-text{font-family:'Poppins',sans-serif;font-weight:700;font-size:11.5px;color:white;text-align:center;line-height:1.3;}
+.cl2-ctas-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.closing-tagline{font-size:13px;font-style:italic;font-weight:700;color:var(--navy);text-align:center;padding:6px 0 0;}
+.cl2-footer{padding-top:12px;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;margin:auto 18mm 14mm;}
+
+/* ── PILL TAGS / DOTS / CHIPS (toolkit system) ── */
+.pill{display:inline-block;font-family:'Poppins',sans-serif;font-size:10px;font-weight:700;border-radius:4px;padding:2px 8px;white-space:nowrap;-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important;}
+.pill-teal{background:rgba(58,158,165,0.1);color:var(--acc-teal);}
+.dots{display:inline-flex;gap:3px;align-items:center;}
+.dot{width:8px;height:8px;border-radius:50%;border:1.5px solid var(--acc-teal);display:inline-block;box-sizing:border-box;-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important;}
+.dot-f{background:var(--acc-teal);}
+.page-chip{margin-left:auto;align-self:center;flex-shrink:0;font-family:'Poppins',sans-serif;font-size:10px;font-weight:700;color:var(--acc-teal);background:rgba(58,158,165,0.1);border-radius:4px;padding:4px 10px;text-decoration:none;white-space:nowrap;-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important;}
+.ws-num-i{width:16px;height:16px;border-radius:50%;background:var(--navy);color:white;font-family:'Poppins',sans-serif;font-weight:800;font-size:9px;display:inline-flex;align-items:center;justify-content:center;vertical-align:-3px;-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important;}
+.ws-num{width:24px;height:24px;border-radius:50%;color:white;font-family:'Poppins',sans-serif;font-weight:800;font-size:11px;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important;}
+.sc-icon{width:28px;height:28px;border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0;-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important;}
+.sc-icon svg{width:15px;height:15px;}
+.ac-icon{width:24px;height:24px;border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-bottom:7px;-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important;}
+.ac-icon svg{width:13px;height:13px;}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0;}
+a:focus-visible,button:focus-visible{outline:3px solid var(--acc-blue);outline-offset:2px;}
+
+/* ── SCREEN ── */
+@media screen{.page{box-shadow:0 12px 44px rgba(15,41,66,0.18)!important;}}
+
+/* ── PRINT ── */
+@page{size:A4;margin:0;}
+@media print{
+  html,body{background:white!important;margin:0!important;padding:0!important;}
+  .no-print{display:none!important;}
+  .pages-wrap{margin:0!important;padding:0!important;gap:0!important;}
+  .page{box-shadow:none!important;border-radius:0!important;margin:0!important;width:210mm!important;height:297mm!important;min-height:297mm!important;max-height:297mm!important;overflow:hidden!important;page-break-after:always!important;break-after:page!important;}
+  .cover-inner,.cl2-inner{height:297mm!important;max-height:297mm!important;overflow:hidden!important;}
+  .page-inner{height:297mm!important;max-height:297mm!important;overflow:hidden!important;display:flex!important;flex-direction:column!important;}
+  *{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important;color-adjust:exact!important;}
+  a{text-decoration:none!important;}
+  .page-footer-url,.cover-footer-url{color:var(--acc-teal)!important;}
+  .cl2-header{background:var(--navy)!important;}
+  .stack-header{background:#eef9fa!important;}
+  .craft-stats{background:var(--navy)!important;}
+  .cl2-cta-bar-coral{background:#1A7A80!important;}
+  .cl2-cta-bar-teal{background:#1377D8!important;}
+}
+</style>
+<style>
+.cover-orbit{display:inline-block;font-family:'Poppins',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#fff;background:var(--navy);padding:7px 16px;border-radius:999px;margin-bottom:14px;-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important;}
+.cl2-cta-bar-navy{display:flex;align-items:center;justify-content:center;gap:8px;width:fit-content;margin:16px auto 0;min-height:0;background:var(--navy)!important;border-radius:6px;padding:10px 18px;-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important;}
+</style>
+<style>
+.addie-table,.t-matrix,.scenarios-table,.scorecard-table,.quick-select-table{table-layout:fixed;}
+.addie-table td,.addie-table th,.t-matrix td,.t-matrix th,.scenarios-table td,.scenarios-table th,.scorecard-table td,.scorecard-table th,.quick-select-table td,.quick-select-table th{overflow-wrap:break-word;word-wrap:break-word;}
+</style>
+</head>
+<body>
+
+<div class="print-bar no-print">
+  <span class="print-bar-title">Trainerfy360 AI Tools for Learning Design: What to Use and When</span>
+  <span class="print-bar-note">Chrome: File → Print → Save as PDF · A4 · Margins: None · ✅ Background graphics · Scale: 100%</span>
+  <button class="btn-print" onclick="window.print()">Save as PDF →</button>
+</div>
+
+<div class="pages-wrap">
+
+<!-- ═══════════════════════════════════════════════ PAGE 1, COVER -->
+<div class="page" id="page-1">
+  <div class="cover-inner">
+    <div class="cover-top">
+      <img src="logo.png" class="cover-logo" alt="Trainerfy360">
+      <div class="cover-logo-rule"></div>
+      <div class="cover-orbit">Part of the AI-Enabled ADDIE Orbit&#8482;</div>
+      <h1 class="cover-h1">AI Tools for Learning Design<span style="color:#E07B54;">.</span></h1>
+      <div class="cover-h2">Choose the right AI tool for the job, and build faster.</div>
+      <div class="cover-h3">Built around the Trainerfy360 Tool Selector</div>
+      <div class="cover-tagline-divider"></div>
+      <p class="cover-tagline">Know which AI tool to use, and when, to create slides, videos, graphics, narration and learning assets without wasting hours comparing tools.</p>
+
+      <div class="cover-features">
+        <div class="cover-feature"><div class="cf-icon" aria-hidden="true">✓</div>AI-Enabled ADDIE: where tools fit in your project lifecycle</div><div class="cover-feature"><div class="cf-icon" aria-hidden="true">✓</div>The Trainerfy360 Tool Selector: four questions that pick the tool</div><div class="cover-feature"><div class="cf-icon" aria-hidden="true">✓</div>The AI Tool-to-Task Matrix: the best tool for every common job</div><div class="cover-feature"><div class="cf-icon" aria-hidden="true">✓</div>AI Agents for Training Questions: platforms to answer repeated questions</div><div class="cover-feature"><div class="cf-icon" aria-hidden="true">✓</div>Tool Scorecard: ease, speed &amp; quality rated out of 5</div>
+      </div>
+    </div>
+
+    <div class="cover-stats-wrap">
+      <div class="craft-stats" aria-hidden="false">
+        <div class="craft-stat"><div class="craft-stat-icon" style="background:#3A9EA5" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></div><div class="craft-stat-val">27 Tasks</div><div class="craft-stat-lbl">Mapped to a best-fit tool</div></div>
+        <div class="craft-stat"><div class="craft-stat-icon" style="background:#E07B54" aria-hidden="true"><svg viewBox="0 0 24 24" fill="white"><path d="M12 2L14.9 8.6L22 9.3L17 14L18.5 21L12 17.5L5.5 21L7 14L2 9.3L9.1 8.6L12 2Z"/></svg></div><div class="craft-stat-val">19 Tools</div><div class="craft-stat-lbl">Rated for ease, speed &amp; quality</div></div>
+        <div class="craft-stat"><div class="craft-stat-icon" style="background:#6DB0F2" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div><div class="craft-stat-val">5 Stages</div><div class="craft-stat-lbl">AI across all of ADDIE</div></div>
+        <div class="craft-stat"><div class="craft-stat-icon" style="background:#3A9EA5" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12L9.5 17.5L20 7"/></svg></div><div class="craft-stat-val">1 Framework</div><div class="craft-stat-lbl">The Tool Selector</div></div>
+      </div>
+    </div>
+    <div class="cover-footer">
+      <span class="cover-footer-text">© 2026 Trainerfy360&#8482; · AI Tools for Learning Design: What to Use and When</span>
+      <a class="cover-footer-url" href="https://trainerfy360.com">trainerfy360.com</a>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════ PAGE 2, DECISION SYSTEM + STACK -->
+<div class="page" id="page-2">
+  <div class="page-inner">
+    <div class="page-header">
+      <img src="logo.png" class="page-logo" alt="Trainerfy360">
+      <span class="page-num">Why This Guide Exists · 02</span>
+    </div>
+
+    <h2>You don't need another AI tools list.<br>You need a decision system<span class="cover-stop">.</span></h2>
+    <hr class="teal-div">
+
+    <p style="font-size:12.5px;color:var(--slate);line-height:1.75;margin-bottom:6px;">Spending more time evaluating AI tools than building with them is a common trap. Hundreds of options, a new "Top 20" list every week, and deadlines that don't wait.</p>
+    <p style="font-size:12.5px;color:var(--slate);line-height:1.75;margin-bottom:16px;">This guide is a <strong style="color:var(--navy);">tool-to-task decision system</strong>: which tool fits which job, and when to use each one.</p>
+
+    <h2 style="font-size:16px;margin-bottom:6px;">How to use this guide<span class="cover-stop">.</span></h2>
+    <hr class="teal-div">
+    <p style="font-size:11.5px;color:var(--slate);margin-bottom:10px;">This isn't a cover-to-cover read. Come in with a task and follow this path:</p>
+    <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:18px;">
+      <div style="display:flex;align-items:flex-start;gap:10px;padding:9px 13px;background:#f4f5f7;border-radius:10px;border-left:3px solid var(--navy);-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important;">
+        <span class="ws-num" style="background:var(--navy);" aria-hidden="true">1</span>
+        <p class="ws-line"><strong>Map your project first</strong> · Use the AI-Enabled ADDIE table to spot where AI will save you the most time in your current project.</p>
+        <a class="page-chip" href="#page-3">Page 3</a>
+      </div>
+      <div style="display:flex;align-items:flex-start;gap:10px;padding:9px 13px;background:#f4f5f7;border-radius:10px;border-left:3px solid var(--acc-teal);-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important;">
+        <span class="ws-num" style="background:var(--acc-teal);" aria-hidden="true">2</span>
+        <p class="ws-line"><strong>Answer the four Selector questions</strong> · What am I making, what's my input, how much time, how polished? They narrow any task to one or two tools.</p>
+        <a class="page-chip" href="#page-4">Page 4</a>
+      </div>
+      <div style="display:flex;align-items:flex-start;gap:10px;padding:9px 13px;background:#f4f5f7;border-radius:10px;border-left:3px solid var(--acc-blue);-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important;">
+        <span class="ws-num" style="background:var(--acc-blue);" aria-hidden="true">3</span>
+        <p class="ws-line"><strong>Confirm your pick in the Matrix</strong> · Find your task, check why the tool fits and what it's best for. Our recommended stack is there too.</p>
+        <a class="page-chip" href="#page-5">Pages 5–6</a>
+      </div>
+      <div style="display:flex;align-items:flex-start;gap:10px;padding:9px 13px;background:#f4f5f7;border-radius:10px;border-left:3px solid var(--acc-coral);-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important;">
+        <span class="ws-num" style="background:var(--acc-coral);" aria-hidden="true">4</span>
+        <p class="ws-line"><strong>Copy a recipe</strong> · Match your scenario, or follow the SME-notes-to-asset workflow step by step.</p>
+        <a class="page-chip" href="#page-7">Pages 7–8</a>
+      </div>
+      <div style="display:flex;align-items:flex-start;gap:10px;padding:9px 13px;background:#f4f5f7;border-radius:10px;border-left:3px solid #2d7a6a;-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important;">
+        <span class="ws-num" style="background:#2d7a6a;" aria-hidden="true">5</span>
+        <p class="ws-line"><strong>Settle ties with the Scorecard</strong> · When two tools both fit, compare ease, speed and output quality before you commit.</p>
+        <a class="page-chip" href="#page-9">Page 9</a>
+      </div>
+    </div>
+
+    
+    <div class="note-coral">
+      <p class="note-body"><strong>Before you start:</strong> if you work with sensitive or regulated data, check your organisation's AI and data policies before uploading SME notes or internal content to cloud-based tools.</p>
+    </div>
+
+    <div class="page-footer">
+      <span class="page-footer-copy">© 2026 Trainerfy360&#8482; · AI Tools for Learning Design: What to Use and When</span>
+      <a class="page-footer-url" href="https://trainerfy360.com">trainerfy360.com</a>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════ PAGE 5, AI-ENABLED ADDIE -->
+<div class="page" id="page-3">
+  <div class="page-inner">
+    <div class="page-header">
+      <img src="logo.png" class="page-logo" alt="Trainerfy360">
+      <span class="page-num">AI-Enabled ADDIE · 03</span>
+    </div>
+
+    <h2>AI-Enabled ADDIE<span class="cover-stop">.</span></h2>
+    <p class="subtitle">Where AI creates leverage across the learning lifecycle</p>
+    <p style="font-size:12px;line-height:1.6;color:var(--slate);margin-bottom:8px;">AI conversations often focus on tools. Learning projects focus on outcomes. This view maps AI to the work happening inside each ADDIE phase, helping you identify where AI can reduce effort, accelerate drafting and support better decisions.</p>
+    <p style="font-size:11.5px;font-style:italic;color:var(--slate);margin-bottom:12px;">ADDIE is a widely used learning design process: Analyse, Design, Develop, Implement, Evaluate.</p>
+    <hr class="teal-div">
+
+    <table class="addie-table">
+      <thead>
+        <tr>
+          <th scope="col" style="width:13%;">ADDIE Stage</th>
+          <th scope="col" style="width:27%;">Common tasks</th>
+          <th scope="col" style="width:31%;">AI tools that help</th>
+          <th scope="col" style="width:29%;">Biggest time-saver</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="addie-stage stage-a">Analyse</span></td>
+          <td>Gather needs, clarify objectives, understand audience</td>
+          <td>ChatGPT, Claude, Gemini, Perplexity, NotebookLM</td>
+          <td style="font-style:italic;">Upload SME docs and let AI extract themes, gaps and audience questions</td>
+        </tr>
+        <tr>
+          <td><span class="addie-stage stage-d">Design</span></td>
+          <td>Structure content, outline activities, draft scripts</td>
+          <td>ChatGPT, Claude, Gemini, Canva</td>
+          <td style="font-style:italic;">Draft outlines, learning objectives, and activity ideas in minutes</td>
+        </tr>
+        <tr>
+          <td><span class="addie-stage stage-de">Develop</span></td>
+          <td>Build slides, videos, graphics, eLearning</td>
+          <td>Gamma, Rise, Storyline, HeyGen, Vyond, ElevenLabs, Canva, Descript</td>
+          <td style="font-style:italic;">Build slides, video, audio, eLearning at 3–5× speed</td>
+        </tr>
+        <tr>
+          <td><span class="addie-stage stage-i">Implement</span></td>
+          <td>Deploy through LMS, deliver workshops, share videos</td>
+          <td>LMS, 360Learning, video platforms, Camtasia</td>
+          <td style="font-style:italic;">Auto-caption, transcript, distribute via LMS or video platform</td>
+        </tr>
+        <tr>
+          <td><span class="addie-stage stage-e">Evaluate</span></td>
+          <td>Collect feedback, analyse results, iterate</td>
+          <td>ChatGPT, Claude, Gemini, forms, survey tools, LMS analytics</td>
+          <td style="font-style:italic;">Summarise feedback, suggest improvements, draft survey questions</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p style="font-size:11px;font-style:italic;color:var(--slate);margin-bottom:16px;">The same tool can appear at several stages, ADDIE isn't a straight line. Choose by task, not by stage alone. This is a map, not a shackle.</p>
+    <div class="page-footer">
+      <span class="page-footer-copy">© 2026 Trainerfy360&#8482; · AI Tools for Learning Design: What to Use and When</span>
+      <a class="page-footer-url" href="https://trainerfy360.com">trainerfy360.com</a>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════ PAGE 3, TOOL SELECTOR -->
+<div class="page" id="page-4">
+  <div class="page-inner">
+    <div class="page-header">
+      <img src="logo.png" class="page-logo" alt="Trainerfy360">
+      <span class="page-num">The Tool Selector · 04</span>
+    </div>
+
+    <h2>The Trainerfy360 Tool Selector<span style="font-size:0.55em;vertical-align:super;color:var(--acc-coral);font-weight:700;"></span><span class="cover-stop">.</span></h2>
+    <p class="subtitle">Four questions that pick the right tool, every time</p>
+    <p style="font-size:12px;line-height:1.6;color:var(--slate);margin:0 0 10px;">I was losing hours auditioning every new AI tool instead of building with the ones that work. Four simple questions brought clarity: start with the task, the input, the deadline and the finish, and the right tool usually becomes obvious. AI should support judgement, not replace it.</p>
+    <p style="font-size:11.5px;color:var(--slate);margin-bottom:14px;">Answer all four and the shortlist is usually one or two tools. Confirm the fit in the matrix on the next page.</p>
+    <hr class="teal-div">
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:18px;">
+      <div style="border:1.5px solid var(--border);border-top:3px solid var(--navy);border-radius:10px;padding:14px 16px;-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important;">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;">
+          <div class="sc-icon" style="background:rgba(15,41,66,0.08)" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#0F2942" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
+          <span style="font-family:'Poppins',sans-serif;font-size:12.5px;font-weight:700;color:var(--navy);">1 · What am I making?</span>
+        </div>
+        <ul class="bullet-list bullet-list-plain" style="font-size:11px;"><li>Slides → Gamma, Canva or Claude (.pptx)</li><li>Video → HeyGen, Synthesia or Vyond</li><li>eLearning → Rise or Storyline</li><li>Audio → ElevenLabs or Descript</li><li>Images → Canva AI, Adobe Express, Midjourney, DALL·E 3</li><li>Documents &amp; surveys → Claude, ChatGPT or Gemini</li></ul>
+      </div>
+      <div style="border:1.5px solid var(--border);border-top:3px solid var(--teal);border-radius:10px;padding:14px 16px;-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important;">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;">
+          <div class="sc-icon" style="background:rgba(58,158,165,0.1)" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#1a7a80" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg></div>
+          <span style="font-family:'Poppins',sans-serif;font-size:12.5px;font-weight:700;color:var(--navy);">2 · What's my input?</span>
+        </div>
+        <ul class="bullet-list bullet-list-plain" style="font-size:11px;"><li>SME notes → Claude, ChatGPT, NotebookLM</li><li>Recorded footage → Descript, Camtasia</li><li>A brief or outline → Gamma, Rise, HeyGen</li><li>A prompt only → Midjourney, DALL·E 3, Vyond</li><li>Feedback data → ChatGPT, Claude, Gemini</li><li>Policy documents → NotebookLM, Claude</li></ul>
+      </div>
+      <div style="border:1.5px solid var(--border);border-top:3px solid var(--acc-blue);border-radius:10px;padding:14px 16px;-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important;">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;">
+          <div class="sc-icon" style="background:rgba(109,176,242,0.15)" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#2563a8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12,6 12,12 16,14"/></svg></div>
+          <span style="font-family:'Poppins',sans-serif;font-size:12.5px;font-weight:700;color:var(--navy);">3 · How much time do I have?</span>
+        </div>
+        <ul class="bullet-list bullet-list-plain" style="font-size:11px;"><li>Under an hour → Gamma, HeyGen, ElevenLabs</li><li>Half a day → Rise, Vyond, Descript</li><li>A full build → Storyline, Camtasia</li><li>Ongoing → Claude, ChatGPT, NotebookLM</li></ul>
+      </div>
+      <div style="border:1.5px solid var(--border);border-top:3px solid var(--acc-coral);border-radius:10px;padding:14px 16px;-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important;">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;">
+          <div class="sc-icon" style="background:rgba(224,123,84,0.1)" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#B5512A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.9 6.6 7.1.7-5 4.7 1.5 7-6.5-3.5L5.5 21 7 14 2 9.3l7.1-.7z"/></svg></div>
+          <span style="font-family:'Poppins',sans-serif;font-size:12.5px;font-weight:700;color:var(--navy);">4 · How polished must it be?</span>
+        </div>
+        <ul class="bullet-list bullet-list-plain" style="font-size:11px;"><li>First draft or internal → Gamma, ChatGPT</li><li>Client-ready and branded → Canva, Claude</li><li>Publication-quality → Midjourney, Storyline, Camtasia</li><li>Compliance content → AI drafts, SME sign-off</li></ul>
+      </div>
+    </div>
+
+    <div class="page-footer">
+      <span class="page-footer-copy">© 2026 Trainerfy360&#8482; · AI Tools for Learning Design: What to Use and When</span>
+      <a class="page-footer-url" href="https://trainerfy360.com">trainerfy360.com</a>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════ PAGE 3, MATRIX PART 1 -->
+<div class="page" id="page-5">
+  <div class="page-inner">
+    <div class="page-header">
+      <img src="logo.png" class="page-logo" alt="Trainerfy360">
+      <span class="page-num">AI Tool-to-Task Matrix · 05</span>
+    </div>
+
+    <h2>The AI Tool-to-Task Matrix<span class="cover-stop">.</span></h2>
+    <p class="subtitle">For each task, here's the best tool and why.</p>
+    <hr class="teal-div">
+
+    <table class="t-matrix">
+      <thead>
+        <tr>
+          <th scope="col" style="width:26%;">Task</th>
+          <th scope="col" style="width:20%;">Recommended tool</th>
+          <th scope="col" style="width:30%;">Why it fits</th>
+          <th scope="col" style="width:24%;">Best for</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td colspan="4" style="background:#eef9fa;font-family:'Poppins',sans-serif;font-weight:700;font-size:10.5px;letter-spacing:0.04em;color:var(--navy);padding:3px 11px;-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important;">Writing &amp; ideation</td></tr>
+        <tr><td>Run role plays and conversation practice</td><td><span class="pill pill-teal">ChatGPT</span> or <span class="pill pill-teal">Claude</span></td><td>Plays the other character, adapts, gives feedback</td><td>Difficult conversations, coaching and feedback practice</td></tr>
+        <tr><td>Summarise SME notes into content</td><td><span class="pill pill-teal">ChatGPT</span> or <span class="pill pill-teal">Claude</span></td><td>Great at distilling, organising, drafting</td><td>Turning messy input into usable content</td></tr>
+        <tr><td>Draft scripts, outlines, and course copy</td><td><span class="pill pill-teal">Claude (Anthropic)</span></td><td>Strong at long-form, nuanced writing and analysis</td><td>Scripts, storyboards, outlines, learning content drafts</td></tr>
+        <tr><td>Draft and summarise inside Microsoft 365</td><td><span class="pill pill-teal">Microsoft 365 Copilot</span></td><td>AI embedded in Word, PowerPoint, Teams and Outlook</td><td>Meeting transcripts to action items, first-pass drafts in your own files</td></tr>
+        <tr><td colspan="4" style="background:#eef9fa;font-family:'Poppins',sans-serif;font-weight:700;font-size:10.5px;letter-spacing:0.04em;color:var(--navy);padding:3px 11px;-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important;">Research &amp; synthesis</td></tr>
+        <tr><td>Research trends, tools, data</td><td><span class="pill pill-teal">Perplexity</span> or <span class="pill pill-teal">Gemini</span></td><td>Fast, cited answers, research-friendly</td><td>Quick fact-checks, trend scans, background research</td></tr>
+        <tr><td>Scan social commentary and live trends</td><td><span class="pill pill-teal">Grok (xAI)</span></td><td>Real-time access to X posts and live discussion</td><td>Social sentiment, emerging topics, what practitioners are saying</td></tr>
+        <tr><td>Synthesise research, source docs, SME content</td><td><span class="pill pill-teal">NotebookLM</span></td><td>Upload sources, ask questions, audio overviews</td><td>Deep research synthesis, dense docs into usable content</td></tr>
+        <tr><td>Research, ideation, Google Workspace tasks</td><td><span class="pill pill-teal">Gemini (Google)</span></td><td>Tight Google integration, multimodal, fast</td><td>Teams in Google Workspace, research + drafting combined</td></tr>
+        <tr><td>Compare AI model outputs side by side</td><td><span class="pill pill-teal">Multi (getmulti.ai)</span></td><td>Run any prompt across multiple models simultaneously</td><td>Prompt testing, picking the best model for a task</td></tr>
+        <tr><td colspan="4" style="background:#eef9fa;font-family:'Poppins',sans-serif;font-weight:700;font-size:10.5px;letter-spacing:0.04em;color:var(--navy);padding:3px 11px;-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important;">Design &amp; visuals</td></tr>
+        <tr><td>Create a workshop deck from scratch</td><td><span class="pill pill-teal">Gamma</span></td><td>Fast structure, clean slides, minimal friction</td><td>Quick decks, first drafts, time-crunch days</td></tr>
+        <tr><td>Refine and brand existing slides</td><td><span class="pill pill-teal">Canva</span></td><td>Magic Edit, brand kits, easy polish</td><td>Making things look "done" without a designer</td></tr>
+        <tr><td>Create an editable slide deck (.pptx)</td><td><span class="pill pill-teal">Claude (pptx skill)</span></td><td>Generates editable PowerPoint files directly from notes or a brief</td><td>Decks you'll finish in PowerPoint, branded templates</td></tr>
+        <tr><td>Create an infographic or job aid</td><td><span class="pill pill-teal">Canva AI</span></td><td>Templates, Magic Edit, fast visuals</td><td>Quick graphics that don't look generic</td></tr>
+        <tr><td>Create motion graphics or animated photos</td><td><span class="pill pill-teal">Canva AI</span></td><td>Magic Animate, animated text + photo effects</td><td>Animated intros, social-style clips, slides with movement</td></tr>
+        <tr><td>Create polished, branded imagery</td><td><span class="pill pill-teal">Midjourney</span> or <span class="pill pill-teal">DALL·E 3</span></td><td>Better quality, more style control</td><td>Professional visuals, branded imagery</td></tr>
+        <tr><td>Create quick concept images</td><td><span class="pill pill-teal">ChatGPT</span></td><td>Fast concept art, quick visuals</td><td>Brainstorming, rough concepts, placeholder art</td></tr>
+      </tbody>
+    </table>
+
+    <div class="page-footer">
+      <span class="page-footer-copy">© 2026 Trainerfy360&#8482; · AI Tools for Learning Design: What to Use and When</span>
+      <a class="page-footer-url" href="https://trainerfy360.com">trainerfy360.com</a>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════ PAGE 4, MATRIX PART 2 -->
+<div class="page" id="page-6">
+  <div class="page-inner">
+    <div class="page-header">
+      <img src="logo.png" class="page-logo" alt="Trainerfy360">
+      <span class="page-num">AI Tool-to-Task Matrix · 06</span>
+    </div>
+
+    <h2>The AI Tool-to-Task Matrix <span style="font-size:16px;font-weight:400;color:var(--slate);">(continued)</span><span class="cover-stop">.</span></h2>
+    <hr class="teal-div">
+
+    <table class="t-matrix" style="margin-bottom:20px;">
+      <thead>
+        <tr>
+          <th scope="col" style="width:26%;">Task</th>
+          <th scope="col" style="width:20%;">Recommended tool</th>
+          <th scope="col" style="width:30%;">Why it fits</th>
+          <th scope="col" style="width:24%;">Best for</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td colspan="4" style="background:#eef9fa;font-family:'Poppins',sans-serif;font-weight:700;font-size:10.5px;letter-spacing:0.04em;color:var(--navy);padding:3px 11px;-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important;">Video &amp; narration</td></tr>
+        <tr><td>Create a realistic avatar video</td><td><span class="pill pill-teal">HeyGen</span></td><td>Realistic, cinematic AI avatars, nuanced script-to-video</td><td>Presenter-led video, onboarding, training at scale</td></tr>
+        <tr><td>Create a personalised avatar of you</td><td><span class="pill pill-teal">HeyGen</span></td><td>Best-in-class personalised avatar cloning</td><td>Trainer-led content at scale, personal brand videos</td></tr>
+        <tr><td>Create videos with stock avatars</td><td><span class="pill pill-teal">Synthesia</span></td><td>Polished library of generic avatars</td><td>Corporate training where any presenter works</td></tr>
+        <tr><td>Create a short explainer video (animation)</td><td><span class="pill pill-teal">Vyond</span></td><td>AI scripts, scenes, characters, animation</td><td>Animated training, scenarios, storytelling</td></tr>
+        <tr><td>Create illustrated characters and scenes</td><td><span class="pill pill-teal">Vyond</span></td><td>Character builder, scene and prop libraries</td><td>Scenario illustrations, character-led learning</td></tr>
+        <tr><td>Create narration without hiring talent</td><td><span class="pill pill-teal">ElevenLabs</span></td><td>Natural-sounding voice, voice cloning</td><td>Voiceover without mic stress or studio time</td></tr>
+        <tr><td>Edit video + add captions easily</td><td><span class="pill pill-teal">Descript</span></td><td>Edit video by editing text, captions, overdub</td><td>Fast video edits, captioning, quick fixes</td></tr>
+        <tr><td>Record software training</td><td><span class="pill pill-teal">Camtasia</span></td><td>Screen recording + editing in one tool</td><td>Software demos, step-by-step training</td></tr>
+        <tr><td colspan="4" style="background:#eef9fa;font-family:'Poppins',sans-serif;font-weight:700;font-size:10.5px;letter-spacing:0.04em;color:var(--navy);padding:3px 11px;-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important;">Course building &amp; interactivity</td></tr>
+        <tr><td>Create a web-based course quickly</td><td><span class="pill pill-teal">Rise (Articulate 360)</span></td><td>Fast authoring, responsive design, AI-assisted</td><td>Mobile-friendly courses, quick rollouts</td></tr>
+        <tr><td>Build interactive eLearning</td><td><span class="pill pill-teal">Storyline</span></td><td>Full control, scenarios, branching</td><td>eLearning that feels real, not generic</td></tr>
+        <tr><td>Collaborative course creation + LMS</td><td><span class="pill pill-teal">360Learning</span></td><td>AI-assisted creation, collaborative LMS</td><td>Teams that want creation + distribution together</td></tr>
+      </tbody>
+    </table>
+
+    <div class="note-coral" style="margin-bottom:20px;">
+      <span class="note-title">What's coming</span>
+      <p class="note-body">Articulate has announced <strong>AI avatar video generation for Articulate 360</strong>, currently previewing through its Articulate Labs early-access program. If you build in Rise or Storyline, watch this space: avatars inside your authoring tool could simplify the whole video step. The bigger shift on the horizon is from tools to systems, agents and workflow builders (such as Copilot Studio) that turn one-off AI help into repeatable team processes.</p>
+    </div>
+
+    <p style="font-size:11px;color:var(--slate);font-style:italic;margin-bottom:18px;">New to AI? Start with ChatGPT or Claude, Canva and Gamma. Most designers get 80% of the productivity gain from those three alone.</p>
+    <div class="page-footer">
+      <span class="page-footer-copy">© 2026 Trainerfy360&#8482; · AI Tools for Learning Design: What to Use and When</span>
+      <a class="page-footer-url" href="https://trainerfy360.com">trainerfy360.com</a>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════ PAGE 6, SCENARIOS + MISTAKES -->
+<div class="page" id="page-7">
+  <div class="page-inner">
+    <div class="page-header">
+      <img src="logo.png" class="page-logo" alt="Trainerfy360">
+      <span class="page-num">Common L&amp;D Scenarios · 07</span>
+    </div>
+
+    <h2>Common L&amp;D Scenarios: "I need…"<span class="cover-stop">.</span></h2>
+    <p class="subtitle">How the system looks in practice, when the clock is ticking</p>
+    <p style="font-size:11.5px;font-style:italic;color:var(--slate);margin-bottom:12px;">Start with the task, not the tool. The examples below show how the decision system works in real learning design scenarios.</p>
+    <hr class="teal-div">
+
+    <table class="scenarios-table">
+      <thead>
+        <tr>
+          <th scope="col" style="width:32%;">I need…</th>
+          <th scope="col" style="width:28%;">Use this</th>
+          <th scope="col" style="width:40%;">Why</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>A workshop deck by tomorrow.</td><td><span class="pill pill-teal">Gamma</span> + <span class="pill pill-teal">Canva</span></td><td>Fast draft, then quick polish.</td></tr>
+        <tr><td>A three-minute compliance explainer.</td><td><span class="pill pill-teal">Claude</span> → <span class="pill pill-teal">HeyGen</span> + <span class="pill pill-teal">ElevenLabs</span></td><td>Script first, then straight to avatar video and narration.</td></tr>
+        <tr><td>Scenario-based dialogue for role plays.</td><td><span class="pill pill-teal">ChatGPT</span> or <span class="pill pill-teal">Claude</span></td><td>Plays the other character, adapts, gives feedback.</td></tr>
+        <tr><td>An animated scenario story.</td><td><span class="pill pill-teal">Vyond</span></td><td>Characters, scenes and storytelling without a studio.</td></tr>
+        <tr><td>Branching decision practice.</td><td><span class="pill pill-teal">Storyline</span></td><td>Realistic choices with consequences, full control.</td></tr>
+        <tr><td>To prototype a course fast.</td><td><span class="pill pill-teal">ChatGPT</span> or <span class="pill pill-teal">Claude</span> → <span class="pill pill-teal">Gamma</span> → <span class="pill pill-teal">Storyline</span></td><td>Fast draft → quick structure → interactive prototype <em>(full workflow: page 8)</em>.</td></tr>
+        <tr><td>To turn messy SME notes into something usable.</td><td><span class="pill pill-teal">Claude</span> or <span class="pill pill-teal">ChatGPT</span></td><td>Refining, not rewriting from scratch.</td></tr>
+        <tr><td>To record a software demo.</td><td><span class="pill pill-teal">Camtasia</span></td><td>Industry standard for a reason.</td></tr>
+      </tbody>
+    </table>
+
+    <div class="mistakes-box">
+      <div class="mistakes-title">Common AI Tool Mistakes</div>
+      <ul class="bullet-list bullet-list-plain">
+        <li>Buying five tools before mastering one</li>
+        <li>Choosing flashy tools over fit-for-purpose ones</li>
+        <li>Using AI before clarifying the learning problem</li>
+        <li>Creating content before validating it</li>
+        <li>Thinking better tools fix weak prompts</li>
+        <li>Ignoring privacy, accessibility and governance</li>
+      </ul>
+    </div>
+
+    <div class="page-footer">
+      <span class="page-footer-copy">© 2026 Trainerfy360&#8482; · AI Tools for Learning Design: What to Use and When</span>
+      <a class="page-footer-url" href="https://trainerfy360.com">trainerfy360.com</a>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════ PAGE 7, SME WORKFLOW -->
+<div class="page" id="page-8">
+  <div class="page-inner">
+    <div class="page-header">
+      <img src="logo.png" class="page-logo" alt="Trainerfy360">
+      <span class="page-num">SME Notes to Learning Asset · 08</span>
+    </div>
+
+    <h2>From SME Notes to Learning Asset<span class="cover-stop">.</span></h2>
+    <p class="subtitle">What happens between SME input and a finished learning asset is where instructional design expertise creates value.</p>
+    <p style="font-size:11.5px;font-style:italic;color:var(--slate);margin-bottom:12px;">This is the bit you can't easily Google: a real workflow, from chaos to asset, with decisions and sequencing.</p>
+    <hr class="teal-div">
+
+    <p style="font-size:11.5px;color:var(--slate);line-height:1.65;margin-bottom:12px;"><strong style="font-family:'Poppins',sans-serif;color:var(--navy);font-weight:700;">Input</strong> <span aria-hidden="true" style="color:var(--acc-teal);font-weight:700;">→</span> SME notes (Word doc brain dump) · One learning objective · Audience: new managers · Deadline: end of week</p>
+
+    <div style="display:grid;grid-template-columns:200px 1fr;column-gap:16px;row-gap:0;align-items:center;margin:14px 0 16px;">
+      <div class="wf-box" style="border-top-color:var(--navy);text-align:center;">
+        <div class="wf-box-title">Claude, ChatGPT or Gemini</div>
+        <div class="wf-box-sub">Summarise · Structure · Script</div>
+      </div>
+      <div style="display:flex;align-items:center;gap:10px;">
+        <span class="ws-num" style="background:var(--navy);" aria-hidden="true">1</span>
+        <p class="ws-line" style="padding-top:0;"><strong>Clarify and structure.</strong> Upload SME notes + objective + audience; summarise key points and draft the outline and script.</p>
+      </div>
+      <div aria-hidden="true" style="text-align:center;font-size:13px;color:var(--acc-teal);font-weight:700;padding:2px 0;">↓</div>
+      <div></div>
+      <div class="wf-box" style="border-top-color:var(--teal);text-align:center;">
+        <div class="wf-box-title">Gamma</div>
+        <div class="wf-box-sub">Generate slide deck</div>
+      </div>
+      <div style="display:flex;align-items:center;gap:10px;">
+        <span class="ws-num" style="background:var(--acc-teal);" aria-hidden="true">2</span>
+        <p class="ws-line" style="padding-top:0;"><strong>Build the first deck.</strong> Paste the outline into Gamma for a clean, structured draft.</p>
+      </div>
+      <div aria-hidden="true" style="text-align:center;font-size:13px;color:var(--acc-teal);font-weight:700;padding:2px 0;">↓</div>
+      <div></div>
+      <div class="wf-box" style="border-top-color:var(--acc-blue);text-align:center;">
+        <div class="wf-box-title">Canva</div>
+        <div class="wf-box-sub">Brand · Polish · Design</div>
+      </div>
+      <div style="display:flex;align-items:center;gap:10px;">
+        <span class="ws-num" style="background:var(--acc-blue);" aria-hidden="true">3</span>
+        <p class="ws-line" style="padding-top:0;"><strong>Brand and refine.</strong> Apply the brand kit and templates until it looks polished.</p>
+      </div>
+      <div aria-hidden="true" style="text-align:center;font-size:13px;color:var(--acc-teal);font-weight:700;padding:2px 0;">↓</div>
+      <div></div>
+      <div class="wf-box" style="border-top-color:var(--acc-coral);text-align:center;">
+        <div class="wf-box-title">HeyGen or Synthesia</div>
+        <div class="wf-box-sub">Script → Avatar video · ElevenLabs voice</div>
+      </div>
+      <div style="display:flex;align-items:center;gap:10px;">
+        <span class="ws-num" style="background:var(--acc-coral);" aria-hidden="true">4</span>
+        <p class="ws-line" style="padding-top:0;"><strong>Create the explainer video.</strong> Reuse the script from Step 1. Video, ready to share.</p>
+      </div>
+      <div aria-hidden="true" style="text-align:center;font-size:13px;color:var(--acc-teal);font-weight:700;padding:2px 0;">↓</div>
+      <div></div>
+      <div class="wf-box" style="border-top-color:#2d7a6a;text-align:center;">
+        <div class="wf-box-title">Storyline</div>
+        <div class="wf-box-sub">Interactive eLearning</div>
+      </div>
+      <div style="display:flex;align-items:center;gap:10px;">
+        <span class="ws-num" style="background:#2d7a6a;" aria-hidden="true">5</span>
+        <p class="ws-line" style="padding-top:0;"><strong>Build the interactive version.</strong> Simple scenario, branching interactions, clickable prototype. Ready to pilot.</p>
+      </div>
+    </div>
+    <p style="font-size:11.5px;color:var(--slate);line-height:1.65;margin-bottom:0;"><strong style="font-family:'Poppins',sans-serif;color:var(--navy);font-weight:700;">Time</strong> <span aria-hidden="true" style="color:var(--acc-teal);font-weight:700;">→</span> AI accelerates every step, allowing more time for review, refinement and learning design decisions.</p>
+    <p style="font-size:10.5px;color:var(--slate);font-style:italic;margin-top:6px;">Working with internal or regulated content? Check your organisation's AI policy before step 1.</p>
+
+    <div class="page-footer">
+      <span class="page-footer-copy">© 2026 Trainerfy360&#8482; · AI Tools for Learning Design: What to Use and When</span>
+      <a class="page-footer-url" href="https://trainerfy360.com">trainerfy360.com</a>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════ PAGE 8, SCORECARD -->
+<div class="page" id="page-9">
+  <div class="page-inner">
+    <div class="page-header">
+      <img src="logo.png" class="page-logo" alt="Trainerfy360">
+      <span class="page-num">Tool Scorecard · 09</span>
+    </div>
+
+    <h2>Tool Scorecard<span class="cover-stop">.</span></h2>
+    <p class="subtitle">Ease · Speed · Output Quality · rated out of 5</p>
+    <p style="font-size:11.5px;font-style:italic;color:var(--slate);margin-bottom:12px;">A quick sanity check for when you're weighing up your options. Ratings reflect practical L&amp;D use, not feature lists, and account for editing time, adoption friction and workflow fit.</p>
+    <hr class="teal-div">
+
+    <table class="scorecard-table">
+      <thead>
+        <tr>
+          <th scope="col" style="width:22%;">Tool</th>
+          <th scope="col" style="width:14%;text-align:center;">Ease</th>
+          <th scope="col" style="width:14%;text-align:center;">Speed</th>
+          <th scope="col" style="width:14%;text-align:center;">Output Quality</th>
+          <th scope="col" style="width:36%;">Sweet spot</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Adobe Express</td><td style="text-align:center;"><span class="sr-only">4 out of 5</span><span class="dots" aria-hidden="true"><i class="dot dot-f"></i><i class="dot dot-f"></i><i class="dot dot-f"></i><i class="dot dot-f"></i><i class="dot"></i></span></td><td style="text-align:center;"><span class="sr-only">4 out of 5</span><span class="dots" aria-hidden="true"><i class="dot dot-f"></i><i class="dot dot-f"></i><i class="dot dot-f"></i><i class="dot dot-f"></i><i class="dot"></i></span></td><td style="text-align:center;"><span class="sr-only">4 out of 5</span><span class="dots" aria-hidden="true"><i class="dot dot-f"></i><i class="dot dot-f"></i><i class="dot dot-f"></i><i class="dot dot-f"></i><i class="dot"></i></span></td><td>Fast branded visuals, quick graphics and simple L&amp;D assets</td></tr>
+        <tr><td>Camtasia</td><td style="text-align:center;"><span class="sr-only">4 out of 5</span><span class="dots" aria-hidden="true"><i class="dot dot-f"></i><i class="dot dot-f"></i><i class="dot dot-f"></i><i class="dot dot-f"></i><i class="dot"></i></span></td><td style="text-align:center;"><span class="sr-only">3 out of 5</span><span class="dots" aria-hidden="true"><i class="dot dot-f"></i><i class="dot dot-f"></i><i class="dot dot-f"></i><i class="dot"></i><i class="dot"></i></span></td><td style="text-align:center;"><span class="sr-only">4 out of 5</span><span class="dots" aria-hidden="true"><i class="dot dot-f"></i><i class="dot dot-f"></i><i class="dot dot-f"></i><i class="dot dot-f"></i><i class="dot"></i></span></td><td>Screen recording + software demos</td></tr>
+        <tr><td>Canva / Canva AI</td><td style="text-align:center;"><span class="sr-only">4 out of 5</span><span class="dots" aria-hidden="true"><i class="dot dot-f"></i><i class="dot dot-f"></i><i class="dot dot-f"></i><i class="dot dot-f"></i><i class="dot"></i></span></td><td style="text-align:center;"><span class="sr-only">4 out of 5</span><span class="dots" aria-hidden="true"><i class="dot dot-f"></i><i class="dot dot-f"></i><i class="dot dot-f"></i><i class="dot dot-f"></i><i class="dot"></i></span></td><td style="text-align:center;"><span class="sr-only">4 out of 5</span><span class="dots" aria-hidden="true"><i class="dot dot-f"></i><i class="dot dot-f"></i><i class="dot dot-f"></i><i class="dot dot-f"></i><i class="dot"></i></span></td><td>Brand polish, graphics, job aids</td></tr>
+        <tr><td>ChatGPT</td><td style="text-align:center;"><span class="sr-only">5 out of 5</span><span class="dots" aria-hidden="true"><i class="dot dot-f"></i><i class="dot dot-f"></i><i class="dot dot-f"></i><i class="dot dot-f"></i><i class="dot dot-f"></i></span></td><td style="text-align:center;"><span class="sr-only">5 out of 5</span><span class="dots" aria-hidden="true"><i class="dot dot-f"></i><i class="dot dot-f"></i><i class="dot dot-f"></i><i class="dot dot-f"></i><i class="dot dot-f"></i></span></td><td style="text-align:center;"><span class="sr-only">4 out of 5</span><span class="dots" aria-hidden="true"><i class="dot dot-f"></i><i class="dot dot-f"></i><i class="dot dot-f"></i><i class="dot dot-f"></i><i class="dot"></i></span></td><td>The default L&amp;D workhorse: outlines, objectives, scripts, scenarios, job aids</td></tr>
+        <tr><td>Claude</td><td style="text-align:center;"><span class="sr-only">5 out of 5</span><span class="dots" aria-hidden="true"><i class="dot dot-f"></i><i class="dot dot-f"></i><i class="dot dot-f"></i><i class="dot dot-f"></i><i class="dot dot-f"></i></span></td><td style="text-align:center;"><span class="sr-only">5 out of 5</span><span class="dots" aria-hidden="true"><i class="dot dot-f"></i><i class="dot dot-f"></i><i class="dot dot-f"></i><i class="dot dot-f"></i><i class="dot dot-f"></i></span></td><td style="text-align:center;"><span class="sr-only">5 out of 5</span><span class="dots" aria-hidden="true"><i class="dot dot-f"></i><i class="dot dot-f"></i><i class="dot dot-f"></i><i class="dot dot-f"></i><i class="dot dot-f"></i></span></td><td>Long-form, nuanced content + analysis</td></tr>
+        <tr><td>Descript</td><td style="text-align:center;"><span class="sr-only">4 out of 5</span><span class="dots" aria-hidden="true"><i class="dot dot-f"></i><i class="dot dot-f"></i><i class="dot dot-f"></i><i class="dot dot-f"></i><i class="dot"></i></span></td><td style="text-align:center;"><span class="sr-only">4 out of 5</span><span class="dots" aria-hidden="true"><i class="dot dot-f"></i><i class="dot dot-f"></i><i class="dot dot-f"></i><i class="dot dot-f"></i><i class="dot"></i></span></td><td style="text-align:center;"><span class="sr-only">4 out of 5</span><span class="dots" aria-hidden="true"><i class="dot dot-f"></i><i class="dot dot-f"></i><i class="dot dot-f"></i><i class="dot dot-f"></i><i class="dot"></i></span></td><td>Video edits + captions quickly</td></tr>
+        <tr><td>ElevenLabs</td><td style="text-align:center;"><span class="sr-only">4 out of 5</span><span class="dots" aria-hidden="true"><i class="dot dot-f"></i><i class="dot dot-f"></i><i class="dot dot-f"></i><i class="dot dot-f"></i><i class="dot"></i></span></td><td style="text-align:center;"><span class="sr-only">5 out of 5</span><span class="dots" aria-hidden="true"><i class="dot dot-f"></i><i class="dot dot-f"></i><i class="dot dot-f"></i><i class="dot dot-f"></i><i class="dot dot-f"></i></span></td><td style="text-align:center;"><span class="sr-only">5 out of 5</span><span class="dots" aria-hidden="true"><i class="dot dot-f"></i><i class="dot dot-f"></i><i class="dot dot-f"></i><i class="dot dot-f"></i><i class="dot dot-f"></i></span></td><td>Natural narration, no mic needed</td></tr>
+        <tr><td>Gamma</td><td style="text-align:center;"><span class="sr-only">4 out of 5</span><span class="dots" aria-hidden="true"><i class="dot dot-f"></i><i class="dot dot-f"></i><i class="dot dot-f"></i><i class="dot dot-f"></i><i class="dot"></i></span></td><td style="text-align:center;"><span class="sr-only">5 out of 5</span><span class="dots" aria-hidden="true"><i class="dot dot-f"></i><i class="dot dot-f"></i><i class="dot dot-f"></i><i class="dot dot-f"></i><i class="dot dot-f"></i></span></td><td style="text-align:center;"><span class="sr-only">3 out of 5</span><span class="dots" aria-hidden="true"><i class="dot dot-f"></i><i class="dot dot-f"></i><i class="dot dot-f"></i><i class="dot"></i><i class="dot"></i></span></td><td>First drafts, structure &amp; storyboarding, then polish in Canva</td></tr>
+        <tr><td>Gemini</td><td style="text-align:center;"><span class="sr-only">4 out of 5</span><span class="dots" aria-hidden="true"><i class="dot dot-f"></i><i class="dot dot-f"></i><i class="dot dot-f"></i><i class="dot dot-f"></i><i class="dot"></i></span></td><td style="text-align:center;"><span class="sr-only">4 out of 5</span><span class="dots" aria-hidden="true"><i class="dot dot-f"></i><i class="dot dot-f"></i><i class="dot dot-f"></i><i class="dot dot-f"></i><i class="dot"></i></span></td><td style="text-align:center;"><span class="sr-only">3 out of 5</span><span class="dots" aria-hidden="true"><i class="dot dot-f"></i><i class="dot dot-f"></i><i class="dot dot-f"></i><i class="dot"></i><i class="dot"></i></span></td><td>Google Workspace + fast research</td></tr>
+        <tr><td>HeyGen</td><td style="text-align:center;"><span class="sr-only">3 out of 5</span><span class="dots" aria-hidden="true"><i class="dot dot-f"></i><i class="dot dot-f"></i><i class="dot dot-f"></i><i class="dot"></i><i class="dot"></i></span></td><td style="text-align:center;"><span class="sr-only">4 out of 5</span><span class="dots" aria-hidden="true"><i class="dot dot-f"></i><i class="dot dot-f"></i><i class="dot dot-f"></i><i class="dot dot-f"></i><i class="dot"></i></span></td><td style="text-align:center;"><span class="sr-only">3 out of 5</span><span class="dots" aria-hidden="true"><i class="dot dot-f"></i><i class="dot dot-f"></i><i class="dot dot-f"></i><i class="dot"></i><i class="dot"></i></span></td><td>Short explainer videos, best under 10 min; longer content can be costly and unstable</td></tr>
+        <tr><td>Microsoft 365 Copilot</td><td style="text-align:center;"><span class="sr-only">4 out of 5</span><span class="dots" aria-hidden="true"><i class="dot dot-f"></i><i class="dot dot-f"></i><i class="dot dot-f"></i><i class="dot dot-f"></i><i class="dot"></i></span></td><td style="text-align:center;"><span class="sr-only">4 out of 5</span><span class="dots" aria-hidden="true"><i class="dot dot-f"></i><i class="dot dot-f"></i><i class="dot dot-f"></i><i class="dot dot-f"></i><i class="dot"></i></span></td><td style="text-align:center;"><span class="sr-only">4 out of 5</span><span class="dots" aria-hidden="true"><i class="dot dot-f"></i><i class="dot dot-f"></i><i class="dot dot-f"></i><i class="dot dot-f"></i><i class="dot"></i></span></td><td>Drafting in Word, PowerPoint, Teams and Outlook; meeting summaries</td></tr>
+        <tr><td>Midjourney</td><td style="text-align:center;"><span class="sr-only">3 out of 5</span><span class="dots" aria-hidden="true"><i class="dot dot-f"></i><i class="dot dot-f"></i><i class="dot dot-f"></i><i class="dot"></i><i class="dot"></i></span></td><td style="text-align:center;"><span class="sr-only">3 out of 5</span><span class="dots" aria-hidden="true"><i class="dot dot-f"></i><i class="dot dot-f"></i><i class="dot dot-f"></i><i class="dot"></i><i class="dot"></i></span></td><td style="text-align:center;"><span class="sr-only">5 out of 5</span><span class="dots" aria-hidden="true"><i class="dot dot-f"></i><i class="dot dot-f"></i><i class="dot dot-f"></i><i class="dot dot-f"></i><i class="dot dot-f"></i></span></td><td>High-quality professional imagery</td></tr>
+        <tr><td>Multi</td><td style="text-align:center;"><span class="sr-only">5 out of 5</span><span class="dots" aria-hidden="true"><i class="dot dot-f"></i><i class="dot dot-f"></i><i class="dot dot-f"></i><i class="dot dot-f"></i><i class="dot dot-f"></i></span></td><td style="text-align:center;"><span class="sr-only">4 out of 5</span><span class="dots" aria-hidden="true"><i class="dot dot-f"></i><i class="dot dot-f"></i><i class="dot dot-f"></i><i class="dot dot-f"></i><i class="dot"></i></span></td><td style="text-align:center;"><span class="sr-only">4 out of 5</span><span class="dots" aria-hidden="true"><i class="dot dot-f"></i><i class="dot dot-f"></i><i class="dot dot-f"></i><i class="dot dot-f"></i><i class="dot"></i></span></td><td>Compare models, pick the best output</td></tr>
+        <tr><td>NotebookLM</td><td style="text-align:center;"><span class="sr-only">4 out of 5</span><span class="dots" aria-hidden="true"><i class="dot dot-f"></i><i class="dot dot-f"></i><i class="dot dot-f"></i><i class="dot dot-f"></i><i class="dot"></i></span></td><td style="text-align:center;"><span class="sr-only">4 out of 5</span><span class="dots" aria-hidden="true"><i class="dot dot-f"></i><i class="dot dot-f"></i><i class="dot dot-f"></i><i class="dot dot-f"></i><i class="dot"></i></span></td><td style="text-align:center;"><span class="sr-only">4 out of 5</span><span class="dots" aria-hidden="true"><i class="dot dot-f"></i><i class="dot dot-f"></i><i class="dot dot-f"></i><i class="dot dot-f"></i><i class="dot"></i></span></td><td>Deep synthesis from source docs</td></tr>
+        <tr><td>Perplexity</td><td style="text-align:center;"><span class="sr-only">5 out of 5</span><span class="dots" aria-hidden="true"><i class="dot dot-f"></i><i class="dot dot-f"></i><i class="dot dot-f"></i><i class="dot dot-f"></i><i class="dot dot-f"></i></span></td><td style="text-align:center;"><span class="sr-only">5 out of 5</span><span class="dots" aria-hidden="true"><i class="dot dot-f"></i><i class="dot dot-f"></i><i class="dot dot-f"></i><i class="dot dot-f"></i><i class="dot dot-f"></i></span></td><td style="text-align:center;"><span class="sr-only">4 out of 5</span><span class="dots" aria-hidden="true"><i class="dot dot-f"></i><i class="dot dot-f"></i><i class="dot dot-f"></i><i class="dot dot-f"></i><i class="dot"></i></span></td><td>Cited research, trend scans</td></tr>
+        <tr><td>Rise</td><td style="text-align:center;"><span class="sr-only">5 out of 5</span><span class="dots" aria-hidden="true"><i class="dot dot-f"></i><i class="dot dot-f"></i><i class="dot dot-f"></i><i class="dot dot-f"></i><i class="dot dot-f"></i></span></td><td style="text-align:center;"><span class="sr-only">4 out of 5</span><span class="dots" aria-hidden="true"><i class="dot dot-f"></i><i class="dot dot-f"></i><i class="dot dot-f"></i><i class="dot dot-f"></i><i class="dot"></i></span></td><td style="text-align:center;"><span class="sr-only">3 out of 5</span><span class="dots" aria-hidden="true"><i class="dot dot-f"></i><i class="dot dot-f"></i><i class="dot dot-f"></i><i class="dot"></i><i class="dot"></i></span></td><td>Fast responsive web courses</td></tr>
+        <tr><td>Storyline</td><td style="text-align:center;"><span class="sr-only">2 out of 5</span><span class="dots" aria-hidden="true"><i class="dot dot-f"></i><i class="dot dot-f"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i></span></td><td style="text-align:center;"><span class="sr-only">2 out of 5</span><span class="dots" aria-hidden="true"><i class="dot dot-f"></i><i class="dot dot-f"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i></span></td><td style="text-align:center;"><span class="sr-only">5 out of 5</span><span class="dots" aria-hidden="true"><i class="dot dot-f"></i><i class="dot dot-f"></i><i class="dot dot-f"></i><i class="dot dot-f"></i><i class="dot dot-f"></i></span></td><td>Complex interactivity, full control</td></tr>
+        <tr><td>Synthesia</td><td style="text-align:center;"><span class="sr-only">4 out of 5</span><span class="dots" aria-hidden="true"><i class="dot dot-f"></i><i class="dot dot-f"></i><i class="dot dot-f"></i><i class="dot dot-f"></i><i class="dot"></i></span></td><td style="text-align:center;"><span class="sr-only">4 out of 5</span><span class="dots" aria-hidden="true"><i class="dot dot-f"></i><i class="dot dot-f"></i><i class="dot dot-f"></i><i class="dot dot-f"></i><i class="dot"></i></span></td><td style="text-align:center;"><span class="sr-only">3 out of 5</span><span class="dots" aria-hidden="true"><i class="dot dot-f"></i><i class="dot dot-f"></i><i class="dot dot-f"></i><i class="dot"></i><i class="dot"></i></span></td><td>Stock-avatar corporate video, strong multi-language support</td></tr>
+        <tr><td>Vyond</td><td style="text-align:center;"><span class="sr-only">3 out of 5</span><span class="dots" aria-hidden="true"><i class="dot dot-f"></i><i class="dot dot-f"></i><i class="dot dot-f"></i><i class="dot"></i><i class="dot"></i></span></td><td style="text-align:center;"><span class="sr-only">4 out of 5</span><span class="dots" aria-hidden="true"><i class="dot dot-f"></i><i class="dot dot-f"></i><i class="dot dot-f"></i><i class="dot dot-f"></i><i class="dot"></i></span></td><td style="text-align:center;"><span class="sr-only">4 out of 5</span><span class="dots" aria-hidden="true"><i class="dot dot-f"></i><i class="dot dot-f"></i><i class="dot dot-f"></i><i class="dot dot-f"></i><i class="dot"></i></span></td><td>Animated scenarios and storytelling</td></tr>
+      </tbody>
+    </table>
+
+    <p style="font-size:10.5px;font-style:italic;color:var(--slate);margin-bottom:14px;">5/5 = best in class · 2/5 = works, but expect friction. Ratings reflect real-world instructional design use, not vendor feature lists.</p>
+
+    <div class="page-footer">
+      <span class="page-footer-copy">© 2026 Trainerfy360&#8482; · AI Tools for Learning Design: What to Use and When</span>
+      <a class="page-footer-url" href="https://trainerfy360.com">trainerfy360.com</a>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════ PAGE 10, QUICK SELECTION -->
+<!-- ═══════════════════════════════════════════════ PAGE 11, AI AGENTS FOR TRAINING QUESTIONS -->
+<div class="page" id="page-11">
+  <div class="page-inner">
+    <div class="page-header">
+      <img src="logo.png" class="page-logo" alt="Trainerfy360">
+      <span class="page-num">AI Agents for Training Questions · 10</span>
+    </div>
+
+    <h2>AI Agents for Training Questions<span class="cover-stop">.</span></h2>
+    <p class="subtitle">Bot and assistant platforms for answering repeated training questions</p>
+    <p style="font-size:11.5px;color:var(--slate);line-height:1.6;margin-bottom:14px;">A fully custom bot isn&#8217;t usually the right starting point. Begin with a reliable knowledge-base assistant trained on approved content, and move to custom development only if advanced workflows or tighter integration demand it.</p>
+    <hr class="teal-div">
+
+    <table class="t-matrix">
+      <thead>
+        <tr>
+          <th scope="col" style="width:22%;">Use case</th>
+          <th scope="col" style="width:28%;">Good options</th>
+          <th scope="col" style="width:25%;">Best for</th>
+          <th scope="col" style="width:25%;">Why it fits</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Fast FAQ bot</td><td>Jotform AI Agents, Zoho SalesIQ and similar no-code builders</td><td>Simple training questions, FAQs, learner support</td><td>Quick to set up and easy to maintain</td></tr>
+        <tr><td>Knowledge-base assistant</td><td>Microsoft document Q&amp;A, enterprise knowledge-assistant tools</td><td>Answers grounded in approved policies, guides and training docs</td><td>Better control over accuracy and source content</td></tr>
+        <tr><td>Learning platform bot</td><td>Built-in AI agents inside enterprise learning platforms</td><td>Compliance support, learner guidance, internal workflows</td><td>Fits the existing learning ecosystem</td></tr>
+        <tr><td>Custom conversational assistant</td><td>Custom builds using AI frameworks and APIs</td><td>Branded assistants, complex workflows, advanced logic</td><td>High flexibility, but needs technical support</td></tr>
+        <tr><td>Research and synthesis assistant</td><td>Source-based Q&amp;A tools (notebook-style assistants)</td><td>Summarising training materials, extracting answers from documents</td><td>Great for internal knowledge and content review</td></tr>
+      </tbody>
+    </table>
+
+    <div class="note-navy" style="margin-bottom:0;">
+      <p class="note-body"><strong>Where to start:</strong> treat agents as a faster way to answer repeated training questions from approved content, not as magic. Quick pilot or small team? Start with a no-code bot builder. Enterprise L&amp;D? A knowledge-base assistant or learning-platform bot. Move to a custom build only when you need advanced workflows or deeper integration.</p>
+    </div>
+
+    <div class="page-footer">
+      <span class="page-footer-copy">© 2026 Trainerfy360&#8482; · AI Tools for Learning Design: What to Use and When</span>
+      <a class="page-footer-url" href="https://trainerfy360.com">trainerfy360.com</a>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════ PAGE 12, CLOSING -->
+<div class="page" id="page-10">
+  <div class="cl2-inner">
+    <div class="cl2-header">
+      <div class="cl2-eyebrow">Trainerfy360 · AI-Enabled Instructional Design</div>
+      <div class="cl2-headline">Want to go deeper<span>?</span></div>
+      <div class="cl2-subheadline">You don't need to be an AI expert. You just need a better system.</div>
+    </div>
+
+    <!-- Bio zone -->
+    <div class="cl2-bio-zone">
+      <div class="cl2-photo-col">
+        <img src="Amanda Headshot Orbit.png" class="cl2-photo" alt="Amanda Jones">
+        <div class="cl2-name">Amanda Jones</div>
+        <div class="cl2-title">Instructional Designer</div>
+        <div class="cl2-org">Founder, Trainerfy360</div>
+      </div>
+      <div class="cl2-bio-text">
+        <p class="cl2-story">I've spent more than 20 years designing learning across corporate, government and higher education.</p>
+        <p class="cl2-story">When AI arrived, I saw talented instructional designers facing a new challenge: not learning the technology, but figuring out how to use it without sacrificing quality, judgement and good learning design.</p>
+        <p class="cl2-story">That's why I created resources like this guide and the <strong>Tool Selector</strong>, practical systems to help L&amp;D professionals work smarter with AI, without losing what makes great learning design great.</p>
+      </div>
+    </div>
+
+    <!-- Stats strip -->
+    <div class="cl2-stats-strip">
+      <div class="cl2-stat-item">
+        <svg class="cl2-stat-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12,6 12,12 16,14"/></svg>
+        <div class="cl2-stat-val">20+</div>
+        <div class="cl2-stat-lbl">Years in Learning Design</div>
+      </div>
+      <div class="cl2-stat-item">
+        <svg class="cl2-stat-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9H4a2 2 0 0 1-2-2V4h4m12 5h2a2 2 0 0 0 2-2V4h-4"/><path d="M12 16v4m-4 0h8"/><path d="M8.5 4h7l1 7a4.5 4.5 0 0 1-9 0z"/></svg>
+        <div class="cl2-stat-val">2</div>
+        <div class="cl2-stat-lbl">Industry Awards</div>
+      </div>
+      <div class="cl2-stat-item">
+        <svg class="cl2-stat-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/><line x1="12" y1="2" x2="12" y2="5"/><line x1="12" y1="19" x2="12" y2="22"/><line x1="2" y1="12" x2="5" y2="12"/><line x1="19" y1="12" x2="22" y2="12"/></svg>
+        <div class="cl2-stat-val">Creator</div>
+        <div class="cl2-stat-lbl">AI-Enabled ADDIE Orbit</div>
+      </div>
+    </div>
+
+    <div class="cl2-body">
+      <div class="cl2-ctas-grid">
+        <div class="cl2-cta-block cl2-cta-block-coral">
+          <div class="cl2-cta-block-title">Want the prompts behind the tools?</div>
+          <p style="font-size:11px;color:var(--slate);line-height:1.6;margin-bottom:8px;text-align:center;min-height:36px;">The companion guide: <strong>AI Prompts for Learning Design</strong>, built on the C.R.A.F.T.&#8482; framework.</p>
+          <ul class="bullet-list bullet-list-plain">
+            <li>The C.R.A.F.T. framework for sharper prompts</li>
+            <li>11 prompts for slides, scripts and content</li>
+            <li>A repeatable system for better AI outputs</li>
+          </ul>
+          <a class="cl2-cta-bar-coral" href="https://trainerfy360.com/craft" style="text-decoration:none;">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7,10 12,15 17,10"/><line x1="12" y1="15" x2="12" y2="3"/></svg><span class="cl2-cta-bar-text">Download AI Prompts for Learning Design · trainerfy360.com/craft</span>
+          </a>
+        </div>
+
+        <div class="cl2-cta-block cl2-cta-block-teal">
+          <div class="cl2-cta-block-title">Want to transform your whole workflow?</div>
+          <p style="font-size:11px;color:var(--slate);line-height:1.6;margin-bottom:8px;text-align:center;min-height:36px;">The companion guide: <strong>Transforming L&amp;D Workflows</strong>, AI across every ADDIE phase.</p>
+          <ul class="bullet-list bullet-list-plain">
+            <li>Traditional vs AI across all five ADDIE phases</li>
+            <li>Where AI saves the most time, stage by stage</li>
+            <li>Governance and safety built into every phase</li>
+          </ul>
+          <a class="cl2-cta-bar-teal" href="https://trainerfy360.com/workflows" style="text-decoration:none;">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7,10 12,15 17,10"/><line x1="12" y1="15" x2="12" y2="3"/></svg><span class="cl2-cta-bar-text">Download Transforming L&amp;D Workflows &#183; trainerfy360.com/workflows</span>
+          </a>
+        </div>
+      </div>
+
+      <a class="cl2-cta-bar-navy" href="https://www.linkedin.com/in/amandajjones1/" style="text-decoration:none;margin-top:16px;">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="white" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg><span class="cl2-cta-bar-text">Connect with Amanda on LinkedIn</span>
+          </a>
+    </div>
+
+    <div class="cl2-footer">
+      <span style="font-size:10px;color:#4a5963;">© 2026 Trainerfy360&#8482; · AI Tools for Learning Design: What to Use and When</span>
+      <a style="font-size:10px;color:var(--acc-teal);font-weight:700;text-decoration:none;" href="https://trainerfy360.com">trainerfy360.com</a>
+    </div>
+  </div>
+</div>
+
+</div><!-- end pages-wrap -->
+</body>
+</html>
